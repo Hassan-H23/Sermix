@@ -1,0 +1,363 @@
+{
+  "header": {
+    "skipToContent": "Skip to content",
+    "logoAlt": "Sermix",
+    "nav": {
+      "services": "Services",
+      "projects": "Projects",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "cta": "Order",
+    "localeToggle": {
+      "label": "Language",
+      "switchToArabic": "العربية",
+      "switchToEnglish": "English"
+    }
+  },
+  "hero": {
+    "eyebrow": "Ready-mix concrete · New Cairo, since 2009",
+    "headline": "Concrete you can build a city on.",
+    "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Cairo — backed by an in-house cube-crushing lab and certified truck scale.",
+    "ctaPrimary": "Request a Quote",
+    "ctaSecondary": "Our Services",
+    "imageAlt": "Sermix concrete mixer truck at the batching plant",
+    "scrollLabel": "Scroll"
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "title": "Mix designs, plant capacity, lab testing — built for spec.",
+    "lede": "From a single residential pour to a multi-phase infrastructure programme, Sermix supplies, tests, and tracks every cubic metre."
+  },
+  "stats": {
+    "title": "Sermix by the numbers",
+    "years": "Years operating",
+    "projects": "Projects delivered",
+    "volume": "Concrete poured",
+    "ops": "Plant operations"
+  },
+  "about": {
+    "eyebrow": "About Sermix",
+    "title": "The strength behind every structure.",
+    "body": "Founded in New Cairo in 2009, Sermix has grown into one of Greater Cairo's most-trusted ready-mix suppliers. We design, batch, and dispatch concrete tuned to the spec — and we test every batch in our own lab so the ticket you sign is the ticket the engineer signs off on.",
+    "pillars": {
+      "reliability": {
+        "label": "Reliability",
+        "value": "On-time pours, sequenced to the contractor's schedule."
+      },
+      "experience": {
+        "label": "Experience",
+        "value": "Sixteen years of mix designs across Egyptian conditions."
+      }
+    },
+    "imageAlt": {
+      "primary": "Sermix mixer truck at the batching plant",
+      "secondary": "Reinforced concrete and steel beam structure under construction"
+    },
+    "cta": "More about Sermix"
+  },
+  "whyChooseUs": {
+    "eyebrow": "Why Sermix",
+    "title": "Built for spec. Tested at every step.",
+    "pillars": {
+      "01": {
+        "title": "Tested every batch",
+        "body": "Compressive-strength cubes pulled from every load and tracked against the ticket — no batch leaves the plant without a record."
+      },
+      "02": {
+        "title": "Cube-crushing lab in-house",
+        "body": "Our own 28-day testing cycle, no third-party delays. Engineers see results when they need them, not when an outside lab gets to them."
+      },
+      "03": {
+        "title": "Certified truck scale",
+        "body": "Calibrated weighbridge on site. Every load weighed twice — at batch and at site — with audit-ready logs."
+      },
+      "04": {
+        "title": "On time, around the clock",
+        "body": "24/7 operations sequenced with the contractor. Night pours, fast-track schedules, and continuous deliveries are routine, not exceptional."
+      }
+    }
+  },
+  "projects": {
+    "eyebrow": "Our Portfolio",
+    "title": "Built across Egypt.",
+    "lede": "A selection of projects we've delivered concrete for since 2009.",
+    "viewAll": "View all projects",
+    "indexTitle": "Our projects",
+    "indexLede": "Every project Sermix has supplied, organised by visual weight rather than chronology. Filtering by category is coming in a later release."
+  },
+  "projectDetail": {
+    "metaSuffix": "Sermix Project",
+    "breadcrumbProjects": "Projects",
+    "meta": {
+      "client": "Client",
+      "location": "Location",
+      "year": "Year",
+      "volume": "Volume"
+    },
+    "descriptionEyebrow": "About the project",
+    "scopeLabel": "Sermix scope",
+    "galleryEyebrow": "Gallery",
+    "nextProjectLabel": "Next project",
+    "nextProjectCta": "Continue",
+    "nextProjectAria": "Continue to the next project"
+  },
+  "footer": {
+    "tagline": "Concrete you can build a city on. Ready-mix supply, lab-tested, dispatched from New Cairo since 2009.",
+    "viewOnMap": "View on map",
+    "columns": {
+      "site": "Site",
+      "contact": "Contact",
+      "hours": "Hours"
+    },
+    "orderLink": "Order",
+    "contactItems": {
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    },
+    "hours": {
+      "operations": { "label": "Operations" },
+      "office": { "label": "Office" }
+    },
+    "copyright": "© {year} {name} · All rights reserved",
+    "origin": "Built in Cairo"
+  },
+  "servicesPage": {
+    "metaTitle": "Services",
+    "hero": {
+      "eyebrow": "Services",
+      "title": "What Sermix delivers — and how every load is accounted for.",
+      "lede": "Ready-mix concrete is the product. The lab, the weighbridge, the dispatch desk, and the maintenance workshop are what makes it a service."
+    },
+    "overview": {
+      "eyebrow": "What we do"
+    },
+    "facts": {
+      "eyebrow": "Service"
+    },
+    "cta": {
+      "eyebrow": "Spec your pour",
+      "title": "Tell us what the pour needs.",
+      "primary": "Request a quote",
+      "secondary": "WhatsApp us"
+    }
+  },
+  "aboutPage": {
+    "metaTitle": "About Sermix",
+    "hero": {
+      "eyebrow": "About Sermix",
+      "title": "We've been pouring Cairo's foundations since 2009.",
+      "lede": "Sermix is a New Cairo ready-mix supplier serving contractors and project managers across Egypt. We design, batch, test, and deliver concrete tuned to the engineer's spec — and we own every link in that chain."
+    },
+    "story": {
+      "eyebrow": "How we got here",
+      "title": "From one batching plant to the contractor's default supplier.",
+      "p1": "Sermix opened in 2009 with a single batching plant in New Cairo and a small fleet of mixers. The brief was simple: deliver concrete on spec, on time, every load — and put a lab on site so every batch can be traced back to a number, not a promise.",
+      "p2": "Sixteen years later, the brief is the same. The plant has grown. The fleet has grown. The roster of contractors who default to Sermix when their schedule can't afford a missed pour has grown.",
+      "p3": "What hasn't changed: every truck leaves with a ticket, every batch goes through the lab, and every customer talks to someone who can read a mix design.",
+      "imageAlt": "Sermix mixer at the batching plant"
+    },
+    "leadership": {
+      "eyebrow": "Leadership",
+      "title": "The people behind the spec.",
+      "founder1": {
+        "name": "Mr. Maher Abdel Sattar",
+        "role": "Chairman & Managing Director"
+      },
+      "founder2": {
+        "name": "Mr. Hussein Khalil",
+        "role": "Vice Chairman & Chief Executive Officer"
+      },
+      "founder3": {
+        "name": "Mr. Saleh Abdel Mohsen",
+        "role": "Founding Board Member"
+      }
+    },
+    "facilities": {
+      "eyebrow": "Facilities",
+      "title": "What we bring to a pour.",
+      "plant": {
+        "title": "Batching plant",
+        "body": "Computer-controlled batching with material certifications kept on file. Capacity tuned for Cairo's daily build cycle — daytime structural, night-shift infrastructure."
+      },
+      "lab": {
+        "title": "On-site testing lab",
+        "body": "In-house compressive-strength testing with results inside the 28-day cycle. Every batch's cubes are tagged to the dispatch ticket so each pour has its own paper trail."
+      },
+      "fleet": {
+        "title": "Fleet and dispatch",
+        "body": "Mixers of 8 m³ and 10 m³ running 24/7 from the New Cairo plant, sequenced through a calibrated weighbridge so every load is logged twice — at batch and at site."
+      }
+    },
+    "cta": {
+      "title": "Ready to spec your next pour?",
+      "primary": "Request a quote",
+      "secondary": "WhatsApp us"
+    }
+  },
+  "contactPage": {
+    "metaTitle": "Contact Sermix",
+    "hero": {
+      "eyebrow": "Get in touch",
+      "title": "Let's talk about your next pour.",
+      "lede": "WhatsApp is the fastest way to reach us. For a written record, use the form below — we reply inside two hours during operating windows."
+    },
+    "methods": {
+      "whatsapp": {
+        "label": "WhatsApp",
+        "helper": "Fastest channel for site-team conversations and same-day orders."
+      },
+      "phone": {
+        "label": "Phone",
+        "helper": "Dispatch and order desk. Reaches a human 24/7."
+      },
+      "email": {
+        "label": "Email",
+        "helper": "For tenders, RFIs, and any communication that needs a written trail."
+      }
+    },
+    "form": {
+      "eyebrow": "Send a message",
+      "title": "Tell us about your project.",
+      "lede": "Name, contact details, and a short description. If you have a spec in mind, mention the grade and volume — we'll come back with the right next step."
+    },
+    "map": {
+      "eyebrow": "Plant location",
+      "title": "Find us in New Cairo.",
+      "embedLabel": "Sermix batching plant location"
+    },
+    "hours": {
+      "operations": {
+        "label": "Operations",
+        "body": "Plant, fleet, and dispatch run round the clock."
+      },
+      "office": {
+        "label": "Office",
+        "body": "Admin, tenders, and accounts."
+      },
+      "response": {
+        "label": "Form response",
+        "body": "Median reply time during operating windows."
+      }
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Your name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "successEyebrow": "Sent",
+      "successTitle": "Your message is in.",
+      "successBody": "We've logged your enquiry and will reply inside two hours during operating windows. For anything urgent, WhatsApp us.",
+      "successReset": "Send another",
+      "errors": {
+        "submitFailed": "Couldn't send. Please try WhatsApp or call us.",
+        "nameRequired": "Please enter your name.",
+        "emailInvalid": "Please enter a valid email.",
+        "phoneRequired": "Please enter your phone number.",
+        "phoneInvalid": "Please enter a valid Egyptian mobile (10/11/12/15…).",
+        "messageTooShort": "Please write a bit more so we can help.",
+        "generic": "Please check this field."
+      }
+    }
+  },
+  "orderPage": {
+    "metaTitle": "Order ready-mix concrete",
+    "hero": {
+      "eyebrow": "Order",
+      "title": "Order ready-mix concrete.",
+      "lede": "Tell us the spec, the volume, and when you need it on site. Dispatch will come back within the hour during operating windows with confirmation and a delivery slot."
+    },
+    "process": {
+      "eyebrow": "How ordering works",
+      "submit": {
+        "title": "Submit",
+        "body": "Send us the project, the mix grade, and the volume. The fuller the brief, the faster the reply."
+      },
+      "confirm": {
+        "title": "Confirm",
+        "body": "Dispatch validates the request, checks plant capacity for your slot, and comes back with a quote."
+      },
+      "design": {
+        "title": "Design",
+        "body": "Our lab finalises the mix design against your spec — slump, strength, and any admixtures you need."
+      },
+      "schedule": {
+        "title": "Schedule",
+        "body": "Truck rotation booked, weighbridge logged, and on-site contact briefed before the first load leaves."
+      }
+    },
+    "formSection": {
+      "eyebrow": "Order form",
+      "title": "Tell us about the pour.",
+      "body": "We need enough to validate the request and stage trucks. Fields marked with an accent are required.",
+      "hints": {
+        "required": {
+          "label": "Required",
+          "body": "Project, grade, volume, date, and a site contact. Everything else is optional but helpful."
+        },
+        "response": {
+          "label": "Response time",
+          "body": "We reply inside one hour during operating windows."
+        }
+      }
+    },
+    "urgent": {
+      "eyebrow": "Same-day pour?",
+      "title": "WhatsApp dispatch directly — we move from there.",
+      "whatsappCta": "WhatsApp",
+      "phoneCta": "Call"
+    }
+  },
+  "order": {
+    "form": {
+      "sections": {
+        "project": "Project",
+        "spec": "Spec",
+        "schedule": "Schedule",
+        "contact": "Site contact",
+        "notes": "Notes"
+      },
+      "projectName": "Project name",
+      "projectLocation": "Site location",
+      "contractor": "Contractor",
+      "grade": "Concrete grade",
+      "gradePlaceholder": "Select a grade",
+      "gradeOther": "Other / custom",
+      "volume": "Volume (m³)",
+      "slump": "Slump",
+      "date": "Pour date",
+      "timeWindow": "Time window",
+      "contactName": "Contact name",
+      "contactPhone": "Contact phone",
+      "contactEmail": "Contact email",
+      "notes": "Notes",
+      "notesPlaceholder": "Anything dispatch should know — access constraints, pump arrangements, admixtures, certifications needed…",
+      "submit": "Submit order",
+      "submitting": "Sending…",
+      "successEyebrow": "Received",
+      "successTitle": "Your order is with dispatch.",
+      "successBody": "We'll come back inside the hour with confirmation, a quote, and a delivery slot.",
+      "successReset": "Submit another order",
+      "errors": {
+        "submitFailed": "Couldn't submit. Please try WhatsApp or call us.",
+        "projectNameRequired": "Please name the project.",
+        "projectLocationRequired": "Please tell us where the pour is.",
+        "gradeRequired": "Please pick a grade.",
+        "volumeRequired": "Please enter a positive volume.",
+        "volumeTooLarge": "Volume looks unusually high — let's confirm by phone.",
+        "dateRequired": "Please pick a pour date.",
+        "contactNameRequired": "Please give us a site contact name.",
+        "phoneRequired": "Please enter a contact phone number.",
+        "phoneInvalid": "Please enter a valid Egyptian mobile.",
+        "emailInvalid": "Please enter a valid email.",
+        "generic": "Please check this field."
+      }
+    }
+  }
+}

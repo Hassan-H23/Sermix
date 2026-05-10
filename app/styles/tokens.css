@@ -1,0 +1,59 @@
+/*
+ * Sermix design tokens — single source of truth.
+ * Heritage Industrial palette: warm cream surface, near-black ink, single confident red.
+ * Mirrors CLAUDE.md. If a value isn't here, add it here first before using it in a component.
+ */
+
+:root {
+  /* Color — accent is Sermix navy from the brand wordmark.
+     `--color-accent-red` is the secondary mark; never a primary button. */
+  --color-bg: #f8f7f5;
+  --color-surface: #efede8;
+  --color-surface-2: #e5e2db;
+  --color-fg: #14110e;
+  --color-fg-muted: #5c5852;
+  --color-fg-subtle: #8a857d;
+  --color-accent: #1b2a6b;
+  --color-accent-hover: #11205a;
+  --color-accent-red: #c8311a;
+  --color-border: #dedad2;
+  --color-concrete: #6e6a63;
+
+  /* Dark-band tokens — for any surface where cream isn't the base. */
+  --color-steel: #1f2329;
+  --color-fg-on-steel: #f5f0e6;
+  --color-fg-on-steel-muted: rgba(245, 240, 230, 0.62);
+  --color-overlay-on-image: rgba(20, 24, 31, 0.85);
+
+  /* Type — fluid scale */
+  --text-display-xl: clamp(3.5rem, 8vw, 7.5rem);
+  --text-display-lg: clamp(2.5rem, 5vw, 4.5rem);
+  --text-display-md: clamp(2rem, 3.5vw, 3rem);
+  --text-h2: clamp(1.5rem, 2.2vw, 2rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+
+  /* Tracking */
+  --tracking-display: -0.03em;
+  --tracking-tight: -0.015em;
+
+  /* Layout */
+  --container-max: 1440px;
+  --content-max: 1200px;
+
+  /* Motion */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-enter: 600ms;
+  --duration-hover: 200ms;
+  --stagger: 80ms;
+
+  /* Default font bindings — overridden per locale below. */
+  --font-display: var(--font-latin);
+  --font-body: var(--font-latin);
+}
+
+/* Arabic locale rebinds display+body to the Arabic family. */
+[lang="ar"] {
+  --font-display: var(--font-arabic);
+  --font-body: var(--font-arabic);
+}
