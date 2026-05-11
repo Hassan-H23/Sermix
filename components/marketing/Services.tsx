@@ -55,7 +55,7 @@ export function Services() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-12 lg:grid-rows-[230px_230px_260px]">
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-12 lg:grid-rows-[230px_230px_230px]">
           {featureTiles[0] && (
             <ServiceTile service={featureTiles[0]} index={1} variant="hero" />
           )}
@@ -66,10 +66,13 @@ export function Services() {
             <ServiceTile service={featureTiles[2]} index={3} variant="standard" />
           )}
           {regularTiles[0] && (
-            <ServiceTile service={regularTiles[0]} index={4} variant="wide" />
+            <ServiceTile service={regularTiles[0]} index={4} variant="standard" />
           )}
           {regularTiles[1] && (
-            <ServiceTile service={regularTiles[1]} index={5} variant="wide" />
+            <ServiceTile service={regularTiles[1]} index={5} variant="standard" />
+          )}
+          {regularTiles[2] && (
+            <ServiceTile service={regularTiles[2]} index={6} variant="standard" />
           )}
         </div>
       </div>
@@ -80,7 +83,7 @@ export function Services() {
 type ServiceTileProps = {
   service: (typeof services)[number];
   index: number;
-  variant: "hero" | "standard" | "wide";
+  variant: "hero" | "standard";
 };
 
 function ServiceTile({ service, index, variant }: ServiceTileProps) {
@@ -89,27 +92,23 @@ function ServiceTile({ service, index, variant }: ServiceTileProps) {
   const description =
     locale === "ar" ? service.shortDescription_ar : service.shortDescription;
 
-  // Visual weight per variant. Hero tile spans 8 cols × 2 rows; others fit
-  // into the 12-col rhythm so the bento reads as deliberately uneven.
-  // NOTE: span classes go on the Reveal wrapper (the actual grid item),
-  // not on the inner <article> — otherwise the grid placement is ignored.
+  // Visual weight per variant. Hero tile spans 8 cols × 2 rows; the five
+  // standards stack 4-wide — two on the end of the hero, then three across
+  // the bottom row. Span classes go on the Reveal wrapper (the actual grid
+  // item), not on the inner article, otherwise grid placement is ignored.
   const spanClass = {
     hero: "sm:col-span-2 lg:col-span-8 lg:row-span-2 min-h-[300px] sm:min-h-[400px] lg:min-h-0",
     standard: "lg:col-span-4 min-h-[200px] lg:min-h-0",
-    wide: "lg:col-span-6 min-h-[220px] lg:min-h-0",
   }[variant];
 
   const indexLabel = String(index).padStart(2, "0");
 
-  // Sizing hint for the bg image: feature tile is wide (8 of 12 cols), the
-  // standards take ~33% of container, wides ~50%. Imprecise but good enough
-  // to keep next/image from over-fetching for small tiles.
+  // Sizing hint for the bg image: hero tile is wide (8 of 12 cols), each
+  // standard takes ~33% of the container at desktop.
   const sizes =
     variant === "hero"
       ? "(min-width: 1024px) 66vw, (min-width: 640px) 100vw, 100vw"
-      : variant === "wide"
-        ? "(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
-        : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+      : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
 
   return (
     <Reveal delay={index * 0.06} className={spanClass}>
@@ -123,7 +122,7 @@ function ServiceTile({ service, index, variant }: ServiceTileProps) {
           aria-hidden
           fill
           sizes={sizes}
-          className="object-cover scale-110 [filter:blur(8px)_saturate(0.92)] transition-[transform,filter] duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.16] group-hover:[filter:blur(5px)_saturate(1.05)]"
+          className="object-cover scale-110 [filter:blur(3px)_saturate(0.92)] transition-[transform,filter] duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.16] group-hover:[filter:blur(0px)_saturate(1.05)]"
         />
         {/* Dark overlay for legibility. Uses --color-overlay-on-image at full
             strength; a gradient subtly darkens the bottom where the title
