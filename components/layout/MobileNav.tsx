@@ -7,9 +7,10 @@ import { Link } from "@/lib/i18n/navigation";
 import { LocaleToggle } from "./LocaleToggle";
 import { company } from "@/lib/data/company";
 
-// Full-screen mobile nav drawer. Slides in from the end side (right in LTR,
-// left in RTL) with a backdrop fade. Body scroll is locked while open. Esc
-// closes. Animation is opacity-only under reduced motion.
+// Full-height mobile nav drawer. Both backdrop and panel are direct fixed
+// elements (not nested inside a positioned parent), so the panel height is
+// computed against the viewport reliably on iOS Safari. `h-dvh` uses the
+// dynamic viewport unit, which adjusts for the URL bar.
 
 const NAV_LINKS = [
   { href: "/services", key: "services" },
@@ -29,11 +30,11 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   const reduce = useReducedMotion();
 
   // In LTR the panel is anchored to the right (end-0) and slides in from
-  // off-screen-right (x: 100% → 0). In RTL the panel is anchored to the
-  // left (end-0 resolves to left) and must slide in from off-screen-left.
+  // off-screen-right. In RTL it's anchored to the left and slides in from
+  // off-screen-left.
   const offX = locale === "ar" ? "-100%" : "100%";
 
-  // Esc closes. Body scroll lock while open. Both effects cleaned up.
+  // Esc closes. Body scroll lock while open.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -53,40 +54,35 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
-          className="fixed inset-0 z-[60] md:hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduce ? 0.15 : 0.3 }}
-          role="dialog"
-          aria-modal="true"
-          aria-label={t("mobileNav.label")}
-        >
-          {/* Backdrop */}
-          <button
+        <>
+          {/* Backdrop — separate fixed sibling so the panel doesn't depend
+              on a nested positioned ancestor for its height. */}
+          <motion.button
+            key="mobilenav-backdrop"
             type="button"
             onClick={onClose}
             aria-label={t("mobileNav.close")}
-            className="absolute inset-0 bg-fg/40 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduce ? 0.15 : 0.3 }}
+            className="fixed inset-0 z-[60] bg-fg/40 backdrop-blur-sm md:hidden"
           />
 
-          {/* Panel — slides from end side. Logical inset/translate keeps
-              the slide direction correct in RTL. */}
+          {/* Panel — fixed to viewport, h-dvh handles iOS URL bar correctly. */}
           <motion.div
+            key="mobilenav-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("mobileNav.label")}
             initial={reduce ? { opacity: 0 } : { x: offX }}
             animate={reduce ? { opacity: 1 } : { x: 0 }}
             exit={reduce ? { opacity: 0 } : { x: offX }}
             transition={{ duration: reduce ? 0.15 : 0.35, ease }}
-            // Drawer is anchored to the visual end of the viewport via
-            // `end-0` (right in LTR, left in RTL). The slide direction
-            // is set via the locale-aware `offX` above.
-            className="absolute inset-y-0 end-0 start-auto flex w-full max-w-[420px] flex-col bg-bg shadow-2xl"
+            className="fixed end-0 top-0 z-[61] flex h-dvh w-full max-w-[420px] flex-col bg-bg shadow-2xl md:hidden"
           >
-            <div className="flex h-16 items-center justify-between border-b border-border px-6">
-              <span
-                className="text-xs font-medium uppercase tracking-[0.22em] text-fg-subtle"
-              >
+            <div className="flex h-16 flex-shrink-0 items-center justify-between border-b border-border px-6">
+              <span className="text-xs font-medium uppercase tracking-[0.22em] text-fg-subtle">
                 {t("mobileNav.menu")}
               </span>
               <button
@@ -114,9 +110,9 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
             <nav
               aria-label={t("mobileNav.label")}
-              className="flex flex-1 flex-col overflow-y-auto px-6 py-8"
+              className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 py-8"
             >
-              <ul className="space-y-1">
+              <ul>
                 {NAV_LINKS.map((link) => (
                   <li key={link.key}>
                     <Link
@@ -144,8 +140,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 {t("cta")}
               </Link>
 
-              {/* Contact shortcuts so the drawer is genuinely useful on
-                  mobile, not just a nav clone. */}
+              {/* Contact shortcuts */}
               <div className="mt-10 space-y-4 border-t border-border pt-8">
                 <a
                   href={company.whatsapp.href}
@@ -183,7 +178,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               </div>
             </nav>
           </motion.div>
-        </motion.div>
+        </>
       )}
     </AnimatePresence>
   );
