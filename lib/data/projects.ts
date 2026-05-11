@@ -24,7 +24,7 @@ export type Project = {
   client: string;
   location: string;
   year: number;
-  volume: string; // e.g. "2,400 m³" — kept LTR even in AR contexts
+  volume: string; // e.g. "2,400 m³", kept LTR even in AR contexts
   coverImage: string;
   heroImage: string;
   scope: string[]; // service slugs from lib/data/services.ts
@@ -96,9 +96,9 @@ export const projects: readonly Project[] = [
     heroImage: "/images/projects/brt.png",
     scope: ["ready-mix-concrete", "truck-scale", "transit-mixers"],
     description:
-      "Bus Rapid Transit corridor — viaducts, station decks, and pavement. The work demanded continuous overnight pours, fast-track strength gain, and accurate batch records pulled from the on-site truck scale.",
+      "Bus Rapid Transit corridor, viaducts, station decks, and pavement. The work demanded continuous overnight pours, fast-track strength gain, and accurate batch records pulled from the on-site truck scale.",
     description_ar:
-      "ممر الحافلات السريعة — جسور علوية، وأرضيات محطات، ورصف. تطلّب العمل عمليات صب ليلية متواصلة، وكسبًا سريعًا للقوة، وسجلات حمولات دقيقة من ميزان الشاحنات في الموقع.",
+      "ممر الحافلات السريعة, جسور علوية، وأرضيات محطات، ورصف. تطلّب العمل عمليات صب ليلية متواصلة، وكسبًا سريعًا للقوة، وسجلات حمولات دقيقة من ميزان الشاحنات في الموقع.",
     gallery: [
       "/images/projects/brt.png",
       "/images/projects/state-cases-authority.png",
@@ -142,9 +142,9 @@ export const projects: readonly Project[] = [
     heroImage: "/images/projects/state-cases-authority.png",
     scope: ["ready-mix-concrete", "cube-crushing-lab"],
     description:
-      "Government services building in the New Administrative Capital. The brief required certified high-strength concrete and full traceability per pour — lab tickets archived against batch numbers for the project's lifetime audit.",
+      "Government services building in the New Administrative Capital. The brief required certified high-strength concrete and full traceability per pour, lab tickets archived against batch numbers for the project's lifetime audit.",
     description_ar:
-      "مبنى خدمات حكومي في العاصمة الإدارية الجديدة. تطلّب المشروع خرسانة معتمدة عالية المقاومة وتتبّعًا كاملاً لكل عملية صب — أرشفة بطاقات المعمل مقابل أرقام الحمولات لتدقيق طوال عمر المشروع.",
+      "مبنى خدمات حكومي في العاصمة الإدارية الجديدة. تطلّب المشروع خرسانة معتمدة عالية المقاومة وتتبّعًا كاملاً لكل عملية صب, أرشفة بطاقات المعمل مقابل أرقام الحمولات لتدقيق طوال عمر المشروع.",
     gallery: [
       "/images/projects/state-cases-authority.png",
       "/images/projects/brt.png",

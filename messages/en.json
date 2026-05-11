@@ -26,7 +26,7 @@
   "hero": {
     "eyebrow": "Ready-mix concrete · New Cairo, since 2009",
     "headline": "Concrete you can build a city on.",
-    "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Cairo — backed by an in-house cube-crushing lab and certified truck scale.",
+    "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Cairo, backed by an in-house cube-crushing lab and certified truck scale.",
     "ctaPrimary": "Request a Quote",
     "ctaSecondary": "Our Services",
     "imageAlt": "Sermix concrete mixer truck at the batching plant",
@@ -36,7 +36,7 @@
   },
   "services": {
     "eyebrow": "Our Services",
-    "title": "Mix designs, plant capacity, lab testing — built for spec.",
+    "title": "Mix designs, plant capacity, lab testing, built for spec.",
     "lede": "From a single residential pour to a multi-phase infrastructure programme, Sermix supplies, tests, and tracks every cubic metre."
   },
   "stats": {
@@ -49,7 +49,7 @@
   "about": {
     "eyebrow": "About Sermix",
     "title": "The strength behind every structure.",
-    "body": "Founded in New Cairo in 2009, Sermix has grown into one of Greater Cairo's most-trusted ready-mix suppliers. We design, batch, and dispatch concrete tuned to the spec — and we test every batch in our own lab so the ticket you sign is the ticket the engineer signs off on.",
+    "body": "Founded in New Cairo in 2009, Sermix has grown into one of Greater Cairo's most-trusted ready-mix suppliers. We design, batch, and dispatch concrete tuned to the spec, and we test every batch in our own lab so the ticket you sign is the ticket the engineer signs off on.",
     "pillars": {
       "reliability": {
         "label": "Reliability",
@@ -72,7 +72,7 @@
     "pillars": {
       "01": {
         "title": "Tested every batch",
-        "body": "Compressive-strength cubes pulled from every load and tracked against the ticket — no batch leaves the plant without a record."
+        "body": "Compressive-strength cubes pulled from every load and tracked against the ticket, no batch leaves the plant without a record."
       },
       "02": {
         "title": "Cube-crushing lab in-house",
@@ -80,7 +80,7 @@
       },
       "03": {
         "title": "Certified truck scale",
-        "body": "Calibrated weighbridge on site. Every load weighed twice — at batch and at site — with audit-ready logs."
+        "body": "Calibrated weighbridge on site. Every load weighed twice, at batch and at site, with audit-ready logs."
       },
       "04": {
         "title": "On time, around the clock",
@@ -139,7 +139,7 @@
     "metaTitle": "Services",
     "hero": {
       "eyebrow": "Services",
-      "title": "What Sermix delivers — and how every load is accounted for.",
+      "title": "What Sermix delivers, and how every load is accounted for.",
       "lede": "Ready-mix concrete is the product. The lab, the weighbridge, the dispatch desk, and the maintenance workshop are what makes it a service."
     },
     "overview": {
@@ -160,12 +160,12 @@
     "hero": {
       "eyebrow": "About Sermix",
       "title": "We've been pouring Cairo's foundations since 2009.",
-      "lede": "Sermix is a New Cairo ready-mix supplier serving contractors and project managers across Egypt. We design, batch, test, and deliver concrete tuned to the engineer's spec — and we own every link in that chain."
+      "lede": "Sermix is a New Cairo ready-mix supplier serving contractors and project managers across Egypt. We design, batch, test, and deliver concrete tuned to the engineer's spec, and we own every link in that chain."
     },
     "story": {
       "eyebrow": "How we got here",
       "title": "From one batching plant to the contractor's default supplier.",
-      "p1": "Sermix opened in 2009 with a single batching plant in New Cairo and a small fleet of mixers. The brief was simple: deliver concrete on spec, on time, every load — and put a lab on site so every batch can be traced back to a number, not a promise.",
+      "p1": "Sermix opened in 2009 with a single batching plant in New Cairo and a small fleet of mixers. The brief was simple: deliver concrete on spec, on time, every load, and put a lab on site so every batch can be traced back to a number, not a promise.",
       "p2": "Sixteen years later, the brief is the same. The plant has grown. The fleet has grown. The roster of contractors who default to Sermix when their schedule can't afford a missed pour has grown.",
       "p3": "What hasn't changed: every truck leaves with a ticket, every batch goes through the lab, and every customer talks to someone who can read a mix design.",
       "imageAlt": "Sermix mixer at the batching plant"
@@ -191,7 +191,7 @@
       "title": "What we bring to a pour.",
       "plant": {
         "title": "Batching plant",
-        "body": "Computer-controlled batching with material certifications kept on file. Capacity tuned for Cairo's daily build cycle — daytime structural, night-shift infrastructure."
+        "body": "Computer-controlled batching with material certifications kept on file. Capacity tuned for Cairo's daily build cycle, daytime structural, night-shift infrastructure."
       },
       "lab": {
         "title": "On-site testing lab",
@@ -199,7 +199,7 @@
       },
       "fleet": {
         "title": "Fleet and dispatch",
-        "body": "Mixers of 8 m³ and 10 m³ running 24/7 from the New Cairo plant, sequenced through a calibrated weighbridge so every load is logged twice — at batch and at site."
+        "body": "Mixers of 8 m³ and 10 m³ running 24/7 from the New Cairo plant, sequenced through a calibrated weighbridge so every load is logged twice, at batch and at site."
       }
     },
     "cta": {
@@ -213,7 +213,7 @@
     "hero": {
       "eyebrow": "Get in touch",
       "title": "Let's talk about your next pour.",
-      "lede": "WhatsApp is the fastest way to reach us. For a written record, use the form below — we reply inside two hours during operating windows."
+      "lede": "WhatsApp is the fastest way to reach us. For a written record, use the form below, we reply inside two hours during operating windows."
     },
     "methods": {
       "whatsapp": {
@@ -232,7 +232,7 @@
     "form": {
       "eyebrow": "Send a message",
       "title": "Tell us about your project.",
-      "lede": "Name, contact details, and a short description. If you have a spec in mind, mention the grade and volume — we'll come back with the right next step."
+      "lede": "Name, contact details, and a short description. If you have a spec in mind, mention the grade and volume, we'll come back with the right next step."
     },
     "map": {
       "eyebrow": "Plant location",
@@ -297,7 +297,7 @@
       },
       "design": {
         "title": "Design",
-        "body": "Our lab finalises the mix design against your spec — slump, strength, and any admixtures you need."
+        "body": "Our lab finalises the mix design against your spec, slump, strength, and any admixtures you need."
       },
       "schedule": {
         "title": "Schedule",
@@ -321,7 +321,7 @@
     },
     "urgent": {
       "eyebrow": "Same-day pour?",
-      "title": "WhatsApp dispatch directly — we move from there.",
+      "title": "WhatsApp dispatch directly, we move from there.",
       "whatsappCta": "WhatsApp",
       "phoneCta": "Call"
     }
@@ -349,7 +349,7 @@
       "contactPhone": "Contact phone",
       "contactEmail": "Contact email",
       "notes": "Notes",
-      "notesPlaceholder": "Anything dispatch should know — access constraints, pump arrangements, admixtures, certifications needed…",
+      "notesPlaceholder": "Anything dispatch should know, access constraints, pump arrangements, admixtures, certifications needed…",
       "submit": "Submit order",
       "submitting": "Sending…",
       "successEyebrow": "Received",
@@ -362,7 +362,7 @@
         "projectLocationRequired": "Please tell us where the pour is.",
         "gradeRequired": "Please pick a grade.",
         "volumeRequired": "Please enter a positive volume.",
-        "volumeTooLarge": "Volume looks unusually high — let's confirm by phone.",
+        "volumeTooLarge": "Volume looks unusually high, let's confirm by phone.",
         "dateRequired": "Please pick a pour date.",
         "contactNameRequired": "Please give us a site contact name.",
         "phoneRequired": "Please enter a contact phone number.",
