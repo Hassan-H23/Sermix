@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { Hero } from "@/components/marketing/Hero";
+import { HeroSlider } from "@/components/marketing/HeroSlider";
 import { Services } from "@/components/marketing/Services";
 import { About } from "@/components/marketing/About";
 import { WhyChooseUs } from "@/components/marketing/WhyChooseUs";
@@ -15,7 +15,7 @@ export default async function HomePage({
 
   return (
     <main>
-      <Hero />
+      <HeroSlider />
       <Services />
       <About />
       <WhyChooseUs />

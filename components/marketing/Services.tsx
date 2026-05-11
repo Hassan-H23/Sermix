@@ -123,7 +123,7 @@ function ServiceTile({ service, index, variant }: ServiceTileProps) {
           aria-hidden
           fill
           sizes={sizes}
-          className="object-cover scale-110 [filter:blur(14px)_saturate(0.92)] transition-[transform,filter] duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.16] group-hover:[filter:blur(10px)_saturate(1.05)]"
+          className="object-cover scale-110 [filter:blur(8px)_saturate(0.92)] transition-[transform,filter] duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.16] group-hover:[filter:blur(5px)_saturate(1.05)]"
         />
         {/* Dark overlay for legibility. Uses --color-overlay-on-image at full
             strength; a gradient subtly darkens the bottom where the title

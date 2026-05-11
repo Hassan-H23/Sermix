@@ -5,11 +5,13 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { LocaleToggle } from "./LocaleToggle";
+import { MobileNav } from "./MobileNav";
 import { cn } from "@/lib/utils/cn";
 
 export function Header() {
   const t = useTranslations("header");
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4);
@@ -78,16 +80,40 @@ export function Header() {
           </Link>
         </nav>
 
-        <div className="ms-auto flex items-center gap-5">
-          <LocaleToggle />
+        <div className="ms-auto flex items-center gap-3 sm:gap-5">
+          <div className="hidden sm:block">
+            <LocaleToggle />
+          </div>
           <Link
             href="/order"
-            className="inline-flex h-10 items-center justify-center rounded-none bg-accent px-5 text-sm font-medium text-bg hover:bg-accent-hover transition-colors duration-200"
+            className="inline-flex h-10 items-center justify-center rounded-none bg-accent px-4 text-sm font-medium text-bg hover:bg-accent-hover transition-colors duration-200 sm:px-5"
           >
             {t("cta")}
           </Link>
+
+          {/* Hamburger — visible only below md, where the nav links are
+              hidden. Tap target is 44×44 (iOS minimum). */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen(true)}
+            aria-label={t("mobileNav.open")}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            className="flex h-11 w-11 items-center justify-center text-fg transition-colors duration-200 hover:text-accent md:hidden"
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
+              <path
+                d="M2 6h18M2 11h18M2 16h18"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="square"
+              />
+            </svg>
+          </button>
         </div>
       </div>
+
+      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
   );
 }

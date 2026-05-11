@@ -13,6 +13,14 @@
       "label": "اللغة",
       "switchToArabic": "العربية",
       "switchToEnglish": "English"
+    },
+    "mobileNav": {
+      "open": "فتح القائمة",
+      "close": "إغلاق القائمة",
+      "label": "قائمة الجوال",
+      "menu": "القائمة",
+      "whatsapp": "واتساب",
+      "phone": "الهاتف"
     }
   },
   "hero": {
@@ -22,7 +30,9 @@
     "ctaPrimary": "اطلب عرض سعر",
     "ctaSecondary": "خدماتنا",
     "imageAlt": "شاحنة خلط الخرسانة من سيرمكس في محطة الخلط",
-    "scrollLabel": "اسحب"
+    "scrollLabel": "اسحب",
+    "sliderLabel": "شريط الصور الرئيسي",
+    "slide": "عرض الصورة {n}"
   },
   "services": {
     "eyebrow": "خدماتنا",
@@ -103,9 +113,11 @@
     "nextProjectAria": "الانتقال إلى المشروع التالي"
   },
   "footer": {
+    "logoAlt": "سيرمكس",
     "tagline": "خرسانة تُبنى عليها المدن. توريد جاهز ومُختبر معمليًا من القاهرة الجديدة منذ 2009.",
     "viewOnMap": "عرض على الخريطة",
     "columns": {
+      "plant": "المحطة",
       "site": "الموقع",
       "contact": "تواصل",
       "hours": "الساعات"

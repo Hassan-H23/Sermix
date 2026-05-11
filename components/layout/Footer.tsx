@@ -1,16 +1,16 @@
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { company } from "@/lib/data/company";
 
 // Global footer — appears on every marketing page via (marketing)/layout.tsx.
 //
-// Background is --color-steel (the same dark band token used by the CTA strips
-// and the project-detail "Next project" footer). Text uses the on-steel pair
-// (--color-fg-on-steel, --color-fg-on-steel-muted).
-//
-// TODO: the brand wordmark below is rendered as type because the supplied
-// sermix_logo.png is navy + red on white — invisible on a dark surface.
-// Request a cream/white variant from the client and swap in <Image>.
+// Structure:
+//   1. Top band — white logo + tagline (brand statement)
+//   2. Four info columns — Plant / Site / Contact / Hours, all aligned to
+//      the same baseline (their eyebrow labels share a grid row top edge,
+//      so nothing reads as visually shifted).
+//   3. Bottom bar — copyright on start, origin tag on end.
 
 const NAV_LINKS = [
   { href: "/services", key: "services" },
@@ -34,28 +34,32 @@ export function Footer() {
       style={{ color: "var(--color-fg-on-steel)" }}
     >
       <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
-          {/* Brand + address — wide column */}
-          <div className="md:col-span-5">
-            <p
-              className="font-extrabold leading-none"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "var(--text-display-md)",
-                letterSpacing: "-0.03em",
-              }}
-            >
-              Sermix
-            </p>
-            <p
-              className="mt-6 max-w-[36ch] text-base leading-relaxed"
-              style={{ color: "var(--color-fg-on-steel-muted)" }}
-            >
-              {t("tagline")}
-            </p>
+        {/* ── Top band: logo + tagline ─────────────────────────────────── */}
+        <div className="flex flex-col items-start gap-6">
+          <Image
+            src="/images/sermix_logo_white.png"
+            alt={t("logoAlt")}
+            width={148}
+            height={107}
+            className="h-12 w-auto"
+          />
+          <p
+            className="max-w-[58ch] text-base leading-relaxed md:text-lg"
+            style={{ color: "var(--color-fg-on-steel-muted)" }}
+          >
+            {t("tagline")}
+          </p>
+        </div>
 
+        {/* ── 4 info columns ───────────────────────────────────────────── */}
+        <div
+          className="mt-16 grid grid-cols-1 gap-12 border-t pt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10"
+          style={{ borderColor: "rgba(245,240,230,0.18)" }}
+        >
+          {/* Plant / address */}
+          <FooterColumn label={t("columns.plant")}>
             <address
-              className="mt-10 not-italic text-base leading-relaxed"
+              className="not-italic text-base leading-relaxed"
               style={{ color: "var(--color-fg-on-steel)" }}
             >
               {company.address.line1}
@@ -74,17 +78,11 @@ export function Footer() {
                 ↗
               </span>
             </a>
-          </div>
+          </FooterColumn>
 
           {/* Site nav */}
-          <div className="md:col-span-2">
-            <p
-              className="text-xs font-medium uppercase tracking-[0.22em]"
-              style={{ color: "var(--color-fg-on-steel-muted)" }}
-            >
-              {t("columns.site")}
-            </p>
-            <ul className="mt-6 space-y-3">
+          <FooterColumn label={t("columns.site")}>
+            <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.key}>
                   <Link
@@ -97,92 +95,34 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </FooterColumn>
 
-          {/* Contact methods — label on top, value below, so the WhatsApp
-              tag never collides with the number inline. Same shape as Hours. */}
-          <div className="md:col-span-3">
-            <p
-              className="text-xs font-medium uppercase tracking-[0.22em]"
-              style={{ color: "var(--color-fg-on-steel-muted)" }}
-            >
-              {t("columns.contact")}
-            </p>
-            <ul className="mt-6 space-y-5">
-              <li>
-                <a
-                  href={`tel:${company.phone.href}`}
-                  className="group block transition-colors duration-200"
-                >
-                  <span
-                    className="block text-xs font-medium uppercase tracking-[0.18em]"
-                    style={{ color: "var(--color-fg-on-steel-muted)" }}
-                  >
-                    {t("contactItems.phone")}
-                  </span>
-                  <span
-                    dir="ltr"
-                    className="mt-1 block text-base group-hover:text-accent"
-                    style={{ color: "var(--color-fg-on-steel)" }}
-                  >
-                    {company.phone.display}
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={company.whatsapp.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group block transition-colors duration-200"
-                >
-                  <span
-                    className="block text-xs font-medium uppercase tracking-[0.18em]"
-                    style={{ color: "var(--color-fg-on-steel-muted)" }}
-                  >
-                    {t("contactItems.whatsapp")}
-                  </span>
-                  <span
-                    dir="ltr"
-                    className="mt-1 block text-base group-hover:text-accent"
-                    style={{ color: "var(--color-fg-on-steel)" }}
-                  >
-                    {company.whatsapp.display}
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={company.email.href}
-                  className="group block transition-colors duration-200"
-                >
-                  <span
-                    className="block text-xs font-medium uppercase tracking-[0.18em]"
-                    style={{ color: "var(--color-fg-on-steel-muted)" }}
-                  >
-                    {t("contactItems.email")}
-                  </span>
-                  <span
-                    dir="ltr"
-                    className="mt-1 block break-all text-base group-hover:text-accent"
-                    style={{ color: "var(--color-fg-on-steel)" }}
-                  >
-                    {company.email.display}
-                  </span>
-                </a>
-              </li>
+          {/* Contact methods */}
+          <FooterColumn label={t("columns.contact")}>
+            <ul className="space-y-5">
+              <ContactItem
+                label={t("contactItems.phone")}
+                value={company.phone.display}
+                href={`tel:${company.phone.href}`}
+              />
+              <ContactItem
+                label={t("contactItems.whatsapp")}
+                value={company.whatsapp.display}
+                href={company.whatsapp.href}
+                external
+              />
+              <ContactItem
+                label={t("contactItems.email")}
+                value={company.email.display}
+                href={company.email.href}
+                breakAll
+              />
             </ul>
-          </div>
+          </FooterColumn>
 
-          {/* Hours — Operations and Office side by side instead of stacked. */}
-          <div className="md:col-span-2">
-            <p
-              className="text-xs font-medium uppercase tracking-[0.22em]"
-              style={{ color: "var(--color-fg-on-steel-muted)" }}
-            >
-              {t("columns.hours")}
-            </p>
-            <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-2">
+          {/* Hours — two stats side by side */}
+          <FooterColumn label={t("columns.hours")}>
+            <dl className="grid grid-cols-2 gap-x-6 gap-y-2">
               <dt
                 className="text-xs font-medium uppercase tracking-[0.18em]"
                 style={{ color: "var(--color-fg-on-steel-muted)" }}
@@ -215,10 +155,10 @@ export function Footer() {
                   : company.hours.officeWindow}
               </dd>
             </dl>
-          </div>
+          </FooterColumn>
         </div>
 
-        {/* Bottom bar */}
+        {/* ── Bottom bar ───────────────────────────────────────────────── */}
         <div
           className="mt-16 flex flex-col items-start justify-between gap-4 border-t pt-8 md:flex-row md:items-center md:gap-8"
           style={{ borderColor: "rgba(245,240,230,0.18)" }}
@@ -238,5 +178,68 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+// ── Internal helpers — keep column markup uniform so the eyebrow labels
+//    line up on the same baseline across all four columns. ─────────────────
+
+function FooterColumn({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <p
+        className="text-xs font-medium uppercase tracking-[0.22em]"
+        style={{ color: "var(--color-fg-on-steel-muted)" }}
+      >
+        {label}
+      </p>
+      <div className="mt-6">{children}</div>
+    </div>
+  );
+}
+
+function ContactItem({
+  label,
+  value,
+  href,
+  external,
+  breakAll,
+}: {
+  label: string;
+  value: string;
+  href: string;
+  external?: boolean;
+  breakAll?: boolean;
+}) {
+  return (
+    <li>
+      <a
+        href={href}
+        {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+        className="group block transition-colors duration-200"
+      >
+        <span
+          className="block text-xs font-medium uppercase tracking-[0.18em]"
+          style={{ color: "var(--color-fg-on-steel-muted)" }}
+        >
+          {label}
+        </span>
+        <span
+          dir="ltr"
+          className={`mt-1 block text-base group-hover:text-accent ${
+            breakAll ? "break-all" : ""
+          }`}
+          style={{ color: "var(--color-fg-on-steel)" }}
+        >
+          {value}
+        </span>
+      </a>
+    </li>
   );
 }

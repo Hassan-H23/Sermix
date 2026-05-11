@@ -13,6 +13,14 @@
       "label": "Language",
       "switchToArabic": "العربية",
       "switchToEnglish": "English"
+    },
+    "mobileNav": {
+      "open": "Open menu",
+      "close": "Close menu",
+      "label": "Mobile navigation",
+      "menu": "Menu",
+      "whatsapp": "WhatsApp",
+      "phone": "Phone"
     }
   },
   "hero": {
@@ -22,7 +30,9 @@
     "ctaPrimary": "Request a Quote",
     "ctaSecondary": "Our Services",
     "imageAlt": "Sermix concrete mixer truck at the batching plant",
-    "scrollLabel": "Scroll"
+    "scrollLabel": "Scroll",
+    "sliderLabel": "Hero slider",
+    "slide": "Show slide {n}"
   },
   "services": {
     "eyebrow": "Our Services",
@@ -103,9 +113,11 @@
     "nextProjectAria": "Continue to the next project"
   },
   "footer": {
+    "logoAlt": "Sermix",
     "tagline": "Concrete you can build a city on. Ready-mix supply, lab-tested, dispatched from New Cairo since 2009.",
     "viewOnMap": "View on map",
     "columns": {
+      "plant": "Plant",
       "site": "Site",
       "contact": "Contact",
       "hours": "Hours"
