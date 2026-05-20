@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 ## Project
 
 Marketing website for **Sermix**, a ready-mix concrete supplier in New Cairo, Egypt, operating since 2009. Primary audience is B2B — contractors, construction firms, and project managers placing concrete orders. The site's job is credibility and lead-gen; the success metrics are submissions to the Order form and contact form.
@@ -12,11 +14,12 @@ Reference (current site, to be replaced): https://h.mts-techsupport.com
 
 - **Framework:** Next.js 15 (App Router) + TypeScript (strict)
 - **Styling:** Tailwind CSS v4 with design tokens in `app/styles/tokens.css`
-- **Components:** shadcn/ui as a starting point, customized — never used verbatim
+- **Components:** hand-built primitives in `components/ui/` (currently `Button.tsx`, `Field.tsx`). shadcn/ui is an aspirational starting point but is *not* installed — don't `npx shadcn add` without first checking that the result composes with our tokens and RTL rules.
 - **Animation:** Framer Motion for component motion; GSAP + ScrollTrigger only if a section needs scroll-driven sequencing
 - **i18n:** `next-intl` with locales `en` and `ar`, full RTL via `dir="rtl"` on the `<html>` tag
-- **Forms:** React Hook Form + Zod
-- **Maps:** Mapbox GL JS (replacing the current Google Maps embed)
+- **Forms:** React Hook Form + Zod, schemas in `lib/forms/schemas.ts`
+- **Email:** Resend, via `lib/email/send.ts` (stub-mode when no API key — see below)
+- **Maps:** planned Mapbox GL JS; *not yet installed*. `components/marketing/MapEmbed.tsx` is the placeholder. Add `mapbox-gl` + token wiring when the map work starts.
 - **Images:** `next/image` only, AVIF/WebP, explicit dimensions always
 - **Package manager:** pnpm
 - **Deployment:** Vercel, preview deploys per PR
@@ -27,53 +30,81 @@ Reference (current site, to be replaced): https://h.mts-techsupport.com
 pnpm dev              # local dev
 pnpm build            # production build
 pnpm start            # serve production build
-pnpm lint             # eslint + tsc --noEmit
-pnpm format           # prettier --write
-pnpm test             # vitest
-pnpm lighthouse       # local lighthouse against the build
+pnpm lint             # next lint + tsc --noEmit
+pnpm format           # prettier --write .
+pnpm test             # vitest (Node env, matches **/*.test.ts(x))
 ```
 
-Run `pnpm lint` before any commit. Run `pnpm lighthouse` before any PR that touches the home page.
+Run `pnpm lint` before any commit. No tests exist yet — `pnpm test` exiting clean does not mean "covered." Add a Lighthouse pass (manual or wire up a script) before any PR that touches the home page.
 
 ## Architecture
 
 ```
 app/
+├── layout.tsx                 # passthrough — returns children, no <html>/<body>
+├── not-found.tsx              # renders its own <html>/<body> (outside locale segment)
+├── fonts.ts                   # next/font/google bindings → --font-latin, --font-arabic
 ├── [locale]/                  # next-intl segment (en | ar)
-│   ├── (marketing)/           # public pages
-│   │   ├── page.tsx           # home
-│   │   ├── about/
-│   │   ├── services/
-│   │   ├── projects/
-│   │   ├── order/             # customer form (primary CTA)
-│   │   ├── contact/
-│   │   └── blog/
-│   └── layout.tsx
-├── api/                       # route handlers (form submit, revalidation)
+│   ├── layout.tsx             # the real <html lang dir>, mounts NextIntlClientProvider
+│   └── (marketing)/           # public pages
+│       ├── layout.tsx         # Header + Footer wrapper for all marketing pages
+│       ├── page.tsx           # home (HeroSlider, Services, About, WhyChooseUs, Projects)
+│       ├── about/
+│       ├── services/
+│       ├── projects/
+│       │   └── [slug]/        # project detail page
+│       ├── order/             # primary CTA form
+│       └── contact/
+├── api/
+│   ├── contact/route.ts       # POST → contactSchema → sendEmail
+│   └── order/route.ts         # POST → orderSchema → sendEmail
 └── styles/
     ├── tokens.css             # single source of truth for design tokens
-    └── globals.css
+    └── globals.css            # wires tokens into Tailwind v4 via @theme
 
 components/
-├── ui/                        # primitives (Button, Card, Input)
-├── marketing/                 # page-specific composed sections
-├── motion/                    # Reveal, Stagger, CountUp wrappers
-└── layout/                    # Header, Footer, MobileNav
+├── ui/                        # primitives — Button, Field
+├── marketing/                 # composed sections (Hero, HeroSlider, Services, About,
+│                              #   WhyChooseUs, Projects, ProjectTile, Stats,
+│                              #   PageHero, MapEmbed)
+├── motion/                    # Reveal, CountUp
+├── forms/                     # ContactForm, OrderForm
+└── layout/                    # Header, Footer, MobileNav, LocaleToggle
 
 lib/
-├── i18n/                      # next-intl config + dictionaries
-├── api/                       # API clients
-└── utils/
+├── data/                      # services.ts, projects.ts, company.ts — bilingual content
+│                              #   source of truth (EN field + `_ar` sibling per string)
+├── email/send.ts              # Resend wrapper with stub-mode fallback
+├── forms/schemas.ts           # Zod schemas + shared Egyptian phone regex
+├── i18n/                      # routing.ts, request.ts, navigation.ts (next-intl)
+└── utils/cn.ts                # clsx wrapper
 
 messages/
-├── en.json
-└── ar.json
+├── en.json                    # next-intl dictionary
+└── ar.json                    # next-intl dictionary (client-supplied AR copy)
 ```
 
 Rules:
 - **Server components by default.** Add `"use client"` only when state, effects, or browser APIs are needed.
 - **Page-specific sections live in `components/marketing/`**, not in the page file itself, once they exceed ~80 lines.
 - **No barrel files** (`index.ts` re-exports) — they break tree-shaking.
+
+### Two-layout pattern (non-obvious)
+
+`app/layout.tsx` is a deliberate passthrough — it returns `children` and renders **no** `<html>` or `<body>`. The real document shell lives in `app/[locale]/layout.tsx` so `lang` and `dir` can switch per locale. `app/not-found.tsx` renders its own `<html>` because it can be hit outside the locale segment. If you add a new top-level route outside `[locale]`, it must bring its own `<html>`/`<body>` too.
+
+### Routing and i18n facts
+
+- `localePrefix: "always"` in `lib/i18n/routing.ts` → every URL is `/en/...` or `/ar/...`. Bare `/` redirects via middleware.
+- Middleware matcher excludes `/api`, `/_next`, `/_vercel`, and any path containing a `.` (static files).
+- `app/[locale]/layout.tsx` validates the param against `routing.locales` and calls `notFound()` on mismatch, then `setRequestLocale(locale)`. Marketing pages must also call `setRequestLocale` at the top of each `page.tsx` for static rendering to work.
+- For internal navigation use the wrappers from `lib/i18n/navigation.ts` (`Link`, `useRouter`, etc.) — they preserve the locale prefix. Don't import directly from `next/link` for in-app links.
+
+### Content layer (`lib/data/`)
+
+- `services.ts`, `projects.ts`, `company.ts` are the bilingual content source of truth. Each user-facing string is a paired (`field`, `field_ar`) pattern — both must be filled. AR strings are still placeholder translations awaiting client copy.
+- Edit data here, not in components. The home Services bento promotes entries with `feature: true` to larger tiles; the `/services` page additionally consumes `longDescription`, `image`, and `keyFacts`.
+- This is the v1 substitute for a CMS. If/when content is migrated, this is what gets replaced.
 
 ## Design system
 
@@ -113,9 +144,11 @@ The accent color is *rare*: primary buttons, key stat numbers, one or two emphas
 ### Typography
 
 Two families, no more:
-- **Display:** `Neue Haas Grotesk Display` (fallback: `Inter Display`, then system) — headings and hero only
-- **Body:** `Inter` (fallback system stack)
+- **Display (target):** `Neue Haas Grotesk Display` (fallback: `Inter Display`, then system) — headings and hero only
+- **Body (target):** `Inter`
 - **Arabic:** `IBM Plex Sans Arabic` for both display and body when locale is `ar`
+
+**Current reality:** `app/fonts.ts` loads Inter (Google) as `--font-latin` for both display and body — Neue Haas is a TODO awaiting licensed `.woff2` files, after which it should be swapped in via `next/font/local` under the same CSS variable name. `IBM Plex Sans Arabic` (Google) is already wired as `--font-arabic`. `app/styles/tokens.css` rebinds `--font-display` / `--font-body` to the Arabic family when `[lang="ar"]`.
 
 Fluid scale via `clamp()`:
 ```
@@ -192,9 +225,21 @@ Non-negotiable on the home page:
 - **Testimonials.** Replace the current repetitive copy with real, distinct client quotes. If the client hasn't supplied them, leave the section out for v1 rather than ship placeholder text.
 - **Contact.** Mapbox map, address, phone, email. Form posts to `/api/contact` and triggers an email via Resend.
 
+## Forms and email
+
+Both forms (`ContactForm`, `OrderForm`) follow the same pipeline: RHF + Zod on the client → POST JSON to a route handler → schema re-validated server-side → `sendEmail()`.
+
+- **Schemas live in `lib/forms/schemas.ts`** and are imported by both client and server. Don't duplicate them.
+- **Shared phone validation.** `normalisedPhone` strips whitespace/dashes, then matches `^(\+20|0)?(10|11|12|15)\d{8}$`. Both forms reuse it — don't reinvent. Error message keys (`phoneRequired`, `phoneInvalid`, etc.) are looked up in `messages/{en,ar}.json`.
+- **Stub-mode email.** `lib/email/send.ts` checks `RESEND_API_KEY`. If unset, it logs the payload to the server console and returns `{ ok: true, stub: true }`. This means the full submission pipeline (validation → API → response → success screen) works end-to-end locally without env vars and goes live the moment they're added.
+- **Production env vars:** `RESEND_API_KEY`, `CONTACT_EMAIL_TO`, `CONTACT_EMAIL_FROM`. The `from` address must be on a domain verified in Resend.
+- **API routes pin `runtime = "nodejs"`** because the Resend SDK isn't Edge-compatible. Don't switch them to `"edge"`.
+- **`replyTo`** is set to the submitter's email so the recipient can hit Reply.
+
 ## Gotchas
 
-- The current CMS content (services, projects, blog) needs to be migrated. Coordinate with the client on whether we keep the existing CMS as a headless source or move to a modern one. Default for v1: hardcode content in MDX under `content/` until migration is decided.
-- Egyptian phone number formatting: keep `+20` prefix and group as `+20 10 1221 1929`. Don't lose leading zeros in form validation.
-- WhatsApp deep link is a primary contact channel: `https://wa.me/201012211929` should be one click from any page on mobile.
-- The current logo files are low-resolution. Ask the client for SVG before launch.
+- **Content layer, not a CMS.** Services, projects, and company info are TypeScript files under `lib/data/` with paired `field` / `field_ar` strings. This is the v1 substitute for a CMS — edit data there, not in components. If/when a real CMS is introduced, coordinate with the client; until then there is no `content/` MDX directory and no headless source.
+- **Egyptian phone numbers.** Keep the `+20` prefix and group as `+20 100 779 0606`. The validator in `lib/forms/schemas.ts` accepts `+20`, `0`, or no prefix and strips whitespace/dashes before checking — don't lose leading zeros in form display.
+- **Contact-number source of truth is unresolved.** `lib/data/company.ts` is currently the authoritative file and lists two channels: phone `+20 100 779 0606` (truck signage, tel-href `+201007790606`) and WhatsApp `+20 101 221 1929` (deep link `https://wa.me/201012211929`). These numbers disagree because they came from different sources; older versions of this doc treated the WhatsApp number as the only number. Until the client confirms, always read both from `company.ts` and don't hardcode either elsewhere.
+- **WhatsApp is a primary mobile contact channel.** The deep link from `company.ts` should be one click from any page on mobile.
+- **Logo files are low-resolution.** Ask the client for SVG before launch.

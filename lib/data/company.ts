@@ -28,6 +28,16 @@ export const company = {
     display: "+20 101 221 1929",
   },
 
+  // TODO: replace `sermix` with the client's actual Facebook Page username
+  // (the part after `facebook.com/` on their page URL). `m.me/<username>`
+  // opens the Messenger app on mobile and messenger.com on desktop. If they
+  // don't have a public Facebook Page, drop the messenger field entirely and
+  // remove the Messenger FAB in components/layout/FloatingActions.tsx.
+  messenger: {
+    href: "https://m.me/sermix",
+    display: "m.me/sermix",
+  },
+
   email: {
     href: "mailto:info@sermix.com.eg",
     display: "info@sermix.com.eg",

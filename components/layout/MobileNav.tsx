@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { href: "/services", key: "services" },
   { href: "/projects", key: "projects" },
   { href: "/about", key: "about" },
+  { href: "/pre-qualification", key: "preQualification" },
   { href: "/contact", key: "contact" },
 ] as const;
 
@@ -89,7 +90,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 type="button"
                 onClick={onClose}
                 aria-label={t("mobileNav.close")}
-                className="-me-2 flex h-10 w-10 items-center justify-center rounded text-fg hover:text-accent transition-colors duration-200"
+                className="-me-2 flex h-11 w-11 items-center justify-center rounded text-fg hover:text-accent transition-colors duration-200"
               >
                 <svg
                   width="20"

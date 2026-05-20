@@ -1,4 +1,9 @@
 {
+  "floatingActions": {
+    "label": "Quick contact",
+    "whatsapp": "Chat with Sermix on WhatsApp",
+    "messenger": "Chat with Sermix on Messenger"
+  },
   "header": {
     "skipToContent": "Skip to content",
     "logoAlt": "Sermix",
@@ -6,6 +11,7 @@
       "services": "Services",
       "projects": "Projects",
       "about": "About",
+      "preQualification": "Pre-qualification",
       "contact": "Contact"
     },
     "cta": "Order",
@@ -32,7 +38,14 @@
     "imageAlt": "Sermix concrete mixer truck at the batching plant",
     "scrollLabel": "Scroll",
     "sliderLabel": "Hero slider",
-    "slide": "Show slide {n}"
+    "slide": "Show slide {n}",
+    "slides": {
+      "video": "The future to those whom have the vision",
+      "foundation": "Where big ideas meet solid ground",
+      "vision": "Vision, set in stone.",
+      "drafted": "Drafted in mind, cast in concrete.",
+      "blueprint": "Where blueprint meets bedrock"
+    }
   },
   "services": {
     "eyebrow": "Our Services",
@@ -206,6 +219,22 @@
       "title": "Ready to spec your next pour?",
       "primary": "Request a quote",
       "secondary": "WhatsApp us"
+    }
+  },
+  "preQualificationPage": {
+    "metaTitle": "Pre-qualification document",
+    "hero": {
+      "eyebrow": "Pre-qualification",
+      "title": "Sermix pre-qualification document.",
+      "lede": "Our company profile, certifications, plant capacity, and quality systems, supplied for tender and pre-qualification packages. Preview below or download the full PDF."
+    },
+    "viewer": {
+      "downloadCta": "Download PDF",
+      "openCta": "Open in new tab",
+      "sizeNote": "PDF · ~11 MB",
+      "iframeLabel": "Sermix pre-qualification document",
+      "fileName": "sermix-pre-qualification.pdf",
+      "fallback": "Some mobile browsers can't render large PDFs inline. If you don't see the document above, use the download link."
     }
   },
   "contactPage": {

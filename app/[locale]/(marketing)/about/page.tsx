@@ -168,7 +168,11 @@ function Leadership() {
 }
 
 // ── Facilities (3-tile grid) ────────────────────────────────────────────────
-const FACILITIES = ["plant", "lab", "fleet"] as const;
+const FACILITIES = [
+  { key: "plant", image: "/images/facility_3.jpeg" },
+  { key: "lab", image: "/images/lab_1.jpeg" },
+  { key: "fleet", image: "/images/fleet_1.jpeg" },
+] as const;
 
 function Facilities() {
   const t = useTranslations("aboutPage.facilities");
@@ -196,28 +200,39 @@ function Facilities() {
         </Reveal>
 
         <ul className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {FACILITIES.map((key, i) => (
-            <Reveal key={key} delay={0.08 + i * 0.08}>
-              <li className="h-full border border-border bg-bg p-8">
-                <span
-                  dir="ltr"
-                  className="text-xs font-medium tracking-[0.22em] text-fg-subtle"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3
-                  className="mt-8 text-fg font-extrabold leading-tight"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "var(--text-h2)",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {t(`${key}.title`)}
-                </h3>
-                <p className="mt-4 text-base leading-relaxed text-fg-muted">
-                  {t(`${key}.body`)}
-                </p>
+          {FACILITIES.map((facility, i) => (
+            <Reveal key={facility.key} delay={0.08 + i * 0.08} className="h-full">
+              <li className="flex h-full flex-col border border-border bg-bg">
+                <div className="relative aspect-[4/3] overflow-hidden bg-surface-2">
+                  <Image
+                    src={facility.image}
+                    alt={t(`${facility.key}.title`)}
+                    fill
+                    sizes="(min-width: 768px) 30vw, 90vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-8">
+                  <span
+                    dir="ltr"
+                    className="text-xs font-medium tracking-[0.22em] text-fg-subtle"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3
+                    className="mt-8 text-fg font-extrabold leading-tight"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "var(--text-h2)",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {t(`${facility.key}.title`)}
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-fg-muted">
+                    {t(`${facility.key}.body`)}
+                  </p>
+                </div>
               </li>
             </Reveal>
           ))}

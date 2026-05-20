@@ -88,7 +88,7 @@ export const services: readonly Service[] = [
       "We pull cubes from every batch, cure them on site, and crush them inside our own lab on the 7-, 14-, and 28-day cycles. No queueing behind another contractor's submissions at a shared lab, no third-party turnaround risk. Every cube is tagged to its dispatch ticket, so when the engineer asks for the strength record of a specific pour, we hand back the chain in minutes.",
     longDescription_ar:
       "نسحب مكعبات اختبار من كل دفعة، ونعالجها في الموقع، ونكسرها في معملنا الخاص على دورات 7 و14 و28 يومًا. دون انتظار خلف طلبات مقاول آخر في معمل مشترك، ودون مخاطر زمن الإرجاع لجهات خارجية. كل مكعب مرتبط ببطاقة الإرسال الخاصة به، فعندما يطلب المهندس سجل مقاومة عملية صب بعينها، نسلّم السلسلة كاملة في دقائق.",
-    image: "/images/cube_crushing_lab.jpg",
+    image: "/images/lab_5.jpeg",
     imageAlt: "Concrete cube being water-quenched after testing",
     imageAlt_ar: "مكعب خرساني تحت اختبار في معمل سيرمكس",
     keyFacts: [

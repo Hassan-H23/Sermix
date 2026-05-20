@@ -65,6 +65,24 @@
     unicode-bidi: isolate;
   }
 
+  /* Arabic letters connect via cursive ligatures. Negative letter-spacing —
+     and even excessive positive tracking — breaks those joins and makes the
+     text look "split apart". The Latin tracking tokens (--tracking-display
+     is -0.03em) and the many `tracking-[0.22em]` eyebrow utilities were
+     tuned for Inter, not Cairo. Force normal tracking across AR text, with
+     an explicit revert for [dir="ltr"] subtrees (phone numbers, "01/02"
+     badges, the locale toggle) so those keep their original spacing.
+     The `!important` is justified — this is a typographic correctness rule
+     for Arabic, not a stylistic override. */
+  [lang="ar"],
+  [lang="ar"] * {
+    letter-spacing: normal !important;
+  }
+  [lang="ar"] [dir="ltr"],
+  [lang="ar"] [dir="ltr"] * {
+    letter-spacing: revert !important;
+  }
+
   ::selection {
     background-color: var(--color-accent);
     color: var(--color-bg);

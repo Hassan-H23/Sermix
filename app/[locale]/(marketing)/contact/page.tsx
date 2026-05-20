@@ -73,8 +73,11 @@ function ContactMethods() {
       <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
         <ul className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
           {methods.map((m, i) => (
-            <Reveal key={m.key} delay={0.08 + i * 0.06}>
-              <li>
+            // h-full chains: grid item (Reveal) → <li> → <a>. Without the
+            // explicit h-full on each link in the chain, the helper-text
+            // length differences leave shorter cards visibly shorter.
+            <Reveal key={m.key} delay={0.08 + i * 0.06} className="h-full">
+              <li className="h-full">
                 <a
                   href={m.href}
                   {...(m.external ? { target: "_blank", rel: "noreferrer" } : {})}

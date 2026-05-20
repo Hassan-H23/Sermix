@@ -73,6 +73,12 @@ export function Header() {
             {t("nav.about")}
           </Link>
           <Link
+            href="/pre-qualification"
+            className="text-sm font-medium text-fg/80 hover:text-fg transition-colors duration-200"
+          >
+            {t("nav.preQualification")}
+          </Link>
+          <Link
             href="/contact"
             className="text-sm font-medium text-fg/80 hover:text-fg transition-colors duration-200"
           >
@@ -86,7 +92,7 @@ export function Header() {
           </div>
           <Link
             href="/order"
-            className="inline-flex h-10 items-center justify-center rounded-none bg-accent px-4 text-sm font-medium text-bg hover:bg-accent-hover transition-colors duration-200 sm:px-5"
+            className="inline-flex h-11 items-center justify-center rounded-none bg-accent px-4 text-sm font-medium text-bg hover:bg-accent-hover transition-colors duration-200 sm:px-5"
           >
             {t("cta")}
           </Link>
