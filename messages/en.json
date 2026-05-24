@@ -30,7 +30,7 @@
     }
   },
   "hero": {
-    "eyebrow": "Ready-mix concrete · New Cairo, since 2009",
+    "eyebrow": "Saudi Egyptian Ready-mix concrete · New Cairo, since 2009",
     "headline": "Concrete you can build a city on.",
     "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Cairo, backed by an in-house cube-crushing lab and certified truck scale.",
     "ctaPrimary": "Request a Quote",
@@ -40,11 +40,26 @@
     "sliderLabel": "Hero slider",
     "slide": "Show slide {n}",
     "slides": {
-      "video": "The future to those whom have the vision",
-      "foundation": "Where big ideas meet solid ground",
-      "vision": "Vision, set in stone.",
-      "drafted": "Drafted in mind, cast in concrete.",
-      "blueprint": "Where blueprint meets bedrock"
+      "video": {
+        "headline": "The future to those whom have the vision.",
+        "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Cairo, backed by an in-house cube-crushing lab and certified truck scale."
+      },
+      "foundation": {
+        "headline": "Where big ideas meet solid ground.",
+        "subhead": "Bridging the gap between the client's vision and the physical reality we deliver. Every big project, a tower, a bridge, a factory starts with concrete."
+      },
+      "vision": {
+        "headline": "Vision, set in stone.",
+        "subhead": "We don't just deliver concrete we deliver certainty. Every pour is a commitment, every foundation a promise kept."
+      },
+      "drafted": {
+        "headline": "Drafted in mind, cast in concrete.",
+        "subhead": "Every great structure in Egypt started as a line on paper. At Sermix, we're the moment it stops being a drawing and starts being real."
+      },
+      "blueprint": {
+        "headline": "Where blueprint meets bedrock.",
+        "subhead": "From the first line drawn to the last meter poured, Sermix delivers the concrete foundation every great project is built on"
+      }
     }
   },
   "services": {

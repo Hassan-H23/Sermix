@@ -216,17 +216,19 @@ export function HeroSlider() {
             letterSpacing: locale === "ar" ? "-0.01em" : "-0.03em",
           }}
         >
-          {t(`slides.${current.headlineKey}`)}
+          {t(`slides.${current.headlineKey}.headline`)}
         </motion.h1>
 
         <motion.p
+          // Remount on slide change so the subhead re-enters with the headline.
+          key={`sub-${current.headlineKey}`}
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0.2 : 0.6, delay: 0.16, ease }}
           className="mt-8 max-w-[58ch] text-lg leading-relaxed md:text-xl"
           style={{ color: "var(--color-fg-on-steel-muted)" }}
         >
-          {t("subhead")}
+          {t(`slides.${current.headlineKey}.subhead`)}
         </motion.p>
 
         <motion.div
