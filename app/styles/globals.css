@@ -99,3 +99,29 @@
     scroll-behavior: auto !important;
   }
 }
+
+/*
+ * Company-logo marquee. The track is rendered with the logo list twice; a
+ * translateX(-50%) keyframe slides the first half off and the second half
+ * (identical content) into its place, giving a seamless loop. Hovering the
+ * strip pauses the animation so a visitor can read a logo they recognise.
+ * Direction is set inline via animation-direction so the RTL locale can
+ * reverse it without a second keyframe block.
+ */
+@keyframes company-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.company-marquee-track {
+  animation: company-marquee-scroll 60s linear infinite;
+  will-change: transform;
+}
+
+.company-marquee:hover .company-marquee-track {
+  animation-play-state: paused;
+}

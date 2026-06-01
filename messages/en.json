@@ -116,6 +116,11 @@
       }
     }
   },
+  "companies": {
+    "eyebrow": "Clients",
+    "title": "The names we pour for.",
+    "ariaLabel": "Companies Sermix has supplied concrete to"
+  },
   "projects": {
     "eyebrow": "Our Portfolio",
     "title": "Built across Egypt.",
