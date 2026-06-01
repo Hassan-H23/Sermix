@@ -7,15 +7,14 @@ import { company } from "@/lib/data/company";
 // Two channel-branded FABs anchored to the trailing bottom corner (flips to
 // the leading corner under RTL via the logical `end-` utility). WhatsApp sits
 // closest to the thumb on mobile because it's Sermix's primary contact channel
-// (CLAUDE.md gotchas). Messenger stacks above as the secondary option.
+// (CLAUDE.md gotchas). Facebook stacks above as the secondary option.
 //
 // Brand colors are hardcoded rather than tokenised: they belong to WhatsApp
 // and Meta, not the Sermix design system, and recognisability is the whole
 // point of using them here. The FABs sit at z-40, below the header (z-50)
 // and the mobile nav drawer (z-60+) so neither is overlapped.
 
-const MESSENGER_GRADIENT =
-  "linear-gradient(135deg, #00B2FF 0%, #006AFF 35%, #9326FF 70%, #FF0080 100%)";
+const FACEBOOK_BLUE = "#1877F2";
 
 const WHATSAPP_GREEN = "#25D366";
 
@@ -40,10 +39,10 @@ export function FloatingActions() {
       className="fixed end-5 z-40 flex flex-col items-end gap-3 md:end-6"
     >
       <motion.a
-        href={company.messenger.href}
+        href={company.facebook.href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={t("messenger")}
+        aria-label={t("facebook")}
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.85 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
@@ -54,9 +53,9 @@ export function FloatingActions() {
         whileHover={reduce ? undefined : { scale: 1.06 }}
         whileTap={reduce ? undefined : { scale: 0.94 }}
         className={baseClasses}
-        style={{ background: MESSENGER_GRADIENT }}
+        style={{ background: FACEBOOK_BLUE }}
       >
-        <MessengerIcon />
+        <FacebookIcon />
       </motion.a>
 
       <motion.a
@@ -96,7 +95,7 @@ function WhatsAppIcon() {
   );
 }
 
-function MessengerIcon() {
+function FacebookIcon() {
   return (
     <svg
       width="26"
@@ -105,7 +104,7 @@ function MessengerIcon() {
       fill="currentColor"
       aria-hidden
     >
-      <path d="M.001 11.639C.001 4.95 5.24 0 12 0s11.999 4.95 11.999 11.639c0 6.689-5.24 11.638-11.999 11.638a13.21 13.21 0 0 1-3.46-.46.96.96 0 0 0-.64.05l-2.38 1.05a.96.96 0 0 1-1.35-.85l-.07-2.13a.97.97 0 0 0-.32-.68A11.39 11.39 0 0 1 .001 11.639zm8.32-2.13l-3.52 5.59c-.34.54.32 1.14.83.77l3.79-2.88a.71.71 0 0 1 .86.01l2.8 2.09c.84.63 2.04.41 2.6-.48l3.52-5.58c.34-.54-.32-1.15-.83-.77l-3.79 2.88a.71.71 0 0 1-.86 0L10.921 9c-.84-.63-2.04-.41-2.6.48z" />
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
     </svg>
   );
 }

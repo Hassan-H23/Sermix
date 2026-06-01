@@ -59,7 +59,7 @@ export function Footer() {
           {/* Plant / address */}
           <FooterColumn label={t("columns.plant")}>
             <address
-              className="not-italic text-base leading-relaxed"
+              className="text-base leading-relaxed not-italic"
               style={{ color: "var(--color-fg-on-steel)" }}
             >
               {company.address.line1}
@@ -70,7 +70,7 @@ export function Footer() {
               href={mapHref}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center text-sm font-medium tracking-tight transition-colors duration-200 hover:text-accent"
+              className="hover:text-accent mt-4 inline-flex items-center text-sm font-medium tracking-tight transition-colors duration-200"
               style={{ color: "var(--color-fg-on-steel-muted)" }}
             >
               {t("viewOnMap")}
@@ -87,7 +87,7 @@ export function Footer() {
                 <li key={link.key}>
                   <Link
                     href={link.href}
-                    className="text-base transition-colors duration-200 hover:text-accent"
+                    className="hover:text-accent text-base transition-colors duration-200"
                     style={{ color: "var(--color-fg-on-steel)" }}
                   >
                     {link.key === "order" ? t("orderLink") : tNav(link.key)}
@@ -100,11 +100,32 @@ export function Footer() {
           {/* Contact methods */}
           <FooterColumn label={t("columns.contact")}>
             <ul className="space-y-5">
-              <ContactItem
-                label={t("contactItems.phone")}
-                value={company.phone.display}
-                href={`tel:${company.phone.href}`}
-              />
+              {/* Both phone lines share a single "Phone" label. */}
+              <li>
+                <span
+                  className="block text-xs font-medium tracking-[0.18em] uppercase"
+                  style={{ color: "var(--color-fg-on-steel-muted)" }}
+                >
+                  {t("contactItems.phone")}
+                </span>
+                <span className="mt-1 flex flex-col gap-1">
+                  {[company.phone, company.phone2].map((p) => (
+                    <a
+                      key={p.href}
+                      href={`tel:${p.href}`}
+                      className="group block transition-colors duration-200"
+                    >
+                      <span
+                        dir="ltr"
+                        className="group-hover:text-accent block text-base"
+                        style={{ color: "var(--color-fg-on-steel)" }}
+                      >
+                        {p.display}
+                      </span>
+                    </a>
+                  ))}
+                </span>
+              </li>
               <ContactItem
                 label={t("contactItems.whatsapp")}
                 value={company.whatsapp.display}
@@ -124,19 +145,19 @@ export function Footer() {
           <FooterColumn label={t("columns.hours")}>
             <dl className="grid grid-cols-2 gap-x-6 gap-y-2">
               <dt
-                className="text-xs font-medium uppercase tracking-[0.18em]"
+                className="text-xs font-medium tracking-[0.18em] uppercase"
                 style={{ color: "var(--color-fg-on-steel-muted)" }}
               >
                 {t("hours.operations.label")}
               </dt>
               <dt
-                className="text-xs font-medium uppercase tracking-[0.18em]"
+                className="text-xs font-medium tracking-[0.18em] uppercase"
                 style={{ color: "var(--color-fg-on-steel-muted)" }}
               >
                 {t("hours.office.label")}
               </dt>
               <dd
-                className="font-extrabold leading-tight"
+                className="leading-tight font-extrabold"
                 style={{
                   color: "var(--color-fg-on-steel)",
                   fontFamily: "var(--font-display)",
@@ -146,13 +167,8 @@ export function Footer() {
               >
                 <span dir="ltr">24 / 7</span>
               </dd>
-              <dd
-                className="text-base leading-snug"
-                style={{ color: "var(--color-fg-on-steel)" }}
-              >
-                {locale === "ar"
-                  ? company.hours.officeWindow_ar
-                  : company.hours.officeWindow}
+              <dd className="text-base leading-snug" style={{ color: "var(--color-fg-on-steel)" }}>
+                {locale === "ar" ? company.hours.officeWindow_ar : company.hours.officeWindow}
               </dd>
             </dl>
           </FooterColumn>
@@ -163,14 +179,11 @@ export function Footer() {
           className="mt-16 flex flex-col items-start justify-between gap-4 border-t pt-8 md:flex-row md:items-center md:gap-8"
           style={{ borderColor: "rgba(245,240,230,0.18)" }}
         >
-          <p
-            className="text-sm"
-            style={{ color: "var(--color-fg-on-steel-muted)" }}
-          >
+          <p className="text-sm" style={{ color: "var(--color-fg-on-steel-muted)" }}>
             {t("copyright", { year, name: company.legalName })}
           </p>
           <p
-            className="text-xs uppercase tracking-[0.22em]"
+            className="text-xs tracking-[0.22em] uppercase"
             style={{ color: "var(--color-fg-on-steel-muted)" }}
           >
             <span dir="ltr">{t("origin")}</span>
@@ -184,17 +197,11 @@ export function Footer() {
 // ── Internal helpers — keep column markup uniform so the eyebrow labels
 //    line up on the same baseline across all four columns. ─────────────────
 
-function FooterColumn({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function FooterColumn({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
       <p
-        className="text-xs font-medium uppercase tracking-[0.22em]"
+        className="text-xs font-medium tracking-[0.22em] uppercase"
         style={{ color: "var(--color-fg-on-steel-muted)" }}
       >
         {label}
@@ -225,16 +232,14 @@ function ContactItem({
         className="group block transition-colors duration-200"
       >
         <span
-          className="block text-xs font-medium uppercase tracking-[0.18em]"
+          className="block text-xs font-medium tracking-[0.18em] uppercase"
           style={{ color: "var(--color-fg-on-steel-muted)" }}
         >
           {label}
         </span>
         <span
           dir="ltr"
-          className={`mt-1 block text-base group-hover:text-accent ${
-            breakAll ? "break-all" : ""
-          }`}
+          className={`group-hover:text-accent mt-1 block text-base ${breakAll ? "break-all" : ""}`}
           style={{ color: "var(--color-fg-on-steel)" }}
         >
           {value}

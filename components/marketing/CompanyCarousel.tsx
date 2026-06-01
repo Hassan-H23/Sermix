@@ -98,7 +98,7 @@ export function CompanyCarousel() {
                   width={400}
                   height={120}
                   sizes="(min-width: 768px) 112px, 80px"
-                  className="h-20 w-auto object-contain opacity-70 grayscale transition duration-300 ease-[var(--ease-out-quint)] hover:opacity-100 hover:grayscale-0 md:h-28"
+                  className="h-20 w-auto object-contain opacity-100 transition duration-300 ease-[var(--ease-out-quint)] hover:scale-105 md:h-28"
                 />
               </li>
             ))}

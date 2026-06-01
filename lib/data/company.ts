@@ -15,27 +15,32 @@ export const company = {
   shortName: "Sermix",
   foundedYear: 2009,
 
+  // Two client-supplied contact lines. `phone` is the primary line (also the
+  // WhatsApp line); `phone2` is the secondary order/dispatch line. Both are
+  // surfaced on the Contact page and in the footer.
   phone: {
     // Tel-callable form (international, no spaces).
-    href: "+201007790606",
+    href: "+201012211929",
     // Human-readable, grouped per CLAUDE.md (+20 prefix, space-separated).
-    display: "+20 100 779 0606",
+    display: "+20 101 221 1929",
+  },
+
+  phone2: {
+    href: "+201103113000",
+    display: "+20 110 311 3000",
   },
 
   whatsapp: {
-    // Sourced from CLAUDE.md gotchas — primary mobile-first contact channel.
+    // Same line as `phone` above — WhatsApp runs on the primary number.
     href: "https://wa.me/201012211929",
     display: "+20 101 221 1929",
   },
 
-  // TODO: replace `sermix` with the client's actual Facebook Page username
-  // (the part after `facebook.com/` on their page URL). `m.me/<username>`
-  // opens the Messenger app on mobile and messenger.com on desktop. If they
-  // don't have a public Facebook Page, drop the messenger field entirely and
-  // remove the Messenger FAB in components/layout/FloatingActions.tsx.
-  messenger: {
-    href: "https://m.me/sermix",
-    display: "m.me/sermix",
+  // Client's public Facebook Page. Opens facebook.com (app on mobile, web on
+  // desktop). Surfaced as the secondary FAB in FloatingActions.tsx.
+  facebook: {
+    href: "https://www.facebook.com/share/18qnzaGjur/?mibextid=wwXIfr",
+    display: "facebook.com/sermix",
   },
 
   email: {

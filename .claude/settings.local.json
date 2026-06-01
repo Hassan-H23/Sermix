@@ -11,7 +11,8 @@
       "PowerShell(winget search *)",
       "PowerShell($latest = Invoke-RestMethod -Uri \"https://api.github.com/repos/ArtifexSoftware/ghostpdl-downloads/releases/latest\" -Headers @{ \"User-Agent\" = \"claude-code\" }; Write-Output \"Tag: $\\($latest.tag_name\\)\"; $latest.assets | Where-Object { $_.name -match \"w64.exe$\" -and $_.name -notmatch \"gpcl|gpdl\" } | Select-Object name, browser_download_url, @{N=\"MB\";E={[math]::Round\\($_.size/1MB,1\\)}})",
       "Bash(node *)",
-      "Bash(pnpm lint *)"
+      "Bash(pnpm lint *)",
+      "Bash(identify public/images/cement_truck.png)"
     ]
   }
 }

@@ -22,11 +22,7 @@ export async function generateMetadata({
   return { title: t("metaTitle") };
 }
 
-export default async function ContactPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
@@ -42,66 +38,88 @@ export default async function ContactPage({
 
 function PageHeroSlot() {
   const t = useTranslations("contactPage");
-  return (
-    <PageHero
-      eyebrow={t("hero.eyebrow")}
-      title={t("hero.title")}
-      lede={t("hero.lede")}
-    />
-  );
+  return <PageHero eyebrow={t("hero.eyebrow")} title={t("hero.title")} lede={t("hero.lede")} />;
 }
 
-// ── Three contact-method tiles ──────────────────────────────────────────────
+// ── Contact-method tiles ────────────────────────────────────────────────────
+// Phone leads in one wide hero container (both lines under a single label),
+// with WhatsApp and Email as two narrower tiles beneath it.
 function ContactMethods() {
   const t = useTranslations("contactPage.methods");
 
-  // Each tile is a clickable card linking to its channel. WhatsApp first
-  // because CLAUDE.md flags it as a primary channel on mobile.
-  const methods: Array<{
-    key: "whatsapp" | "phone" | "email";
+  const phones = [company.phone, company.phone2];
+
+  const secondary: Array<{
+    id: "whatsapp" | "email";
     href: string;
     value: string;
     external?: boolean;
   }> = [
-    { key: "whatsapp", href: company.whatsapp.href, value: company.whatsapp.display, external: true },
-    { key: "phone", href: `tel:${company.phone.href}`, value: company.phone.display },
-    { key: "email", href: company.email.href, value: company.email.display },
+    {
+      id: "whatsapp",
+      href: company.whatsapp.href,
+      value: company.whatsapp.display,
+      external: true,
+    },
+    { id: "email", href: company.email.href, value: company.email.display },
   ];
 
   return (
     <section className="bg-bg pb-16 md:pb-20">
       <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
-        <ul className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-          {methods.map((m, i) => (
-            // h-full chains: grid item (Reveal) → <li> → <a>. Without the
-            // explicit h-full on each link in the chain, the helper-text
-            // length differences leave shorter cards visibly shorter.
-            <Reveal key={m.key} delay={0.08 + i * 0.06} className="h-full">
+        {/* Phone — one big container holding both lines. */}
+        <Reveal delay={0.08}>
+          <div className="border-border bg-surface border p-7 md:p-10">
+            <div className="flex items-center gap-4">
+              <p className="text-fg-subtle text-sm font-medium tracking-[0.18em] uppercase">
+                {t("phone.label")}
+              </p>
+              <span aria-hidden className="bg-fg/15 h-px flex-1" />
+            </div>
+            <div className="mt-6 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:gap-x-16 sm:gap-y-6">
+              {phones.map((p) => (
+                <a key={p.href} href={`tel:${p.href}`} className="group block">
+                  <span
+                    dir="ltr"
+                    className="text-fg group-hover:text-accent leading-none font-extrabold transition-colors duration-200"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "var(--text-display-md)",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {p.display}
+                  </span>
+                </a>
+              ))}
+            </div>
+            <p className="text-fg-muted mt-6 max-w-[52ch] text-sm">{t("phone.helper")}</p>
+          </div>
+        </Reveal>
+
+        {/* WhatsApp + Email — two separate containers. */}
+        <ul className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+          {secondary.map((m, i) => (
+            <Reveal key={m.id} delay={0.14 + i * 0.06} className="h-full">
               <li className="h-full">
                 <a
                   href={m.href}
                   {...(m.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                  className="group flex h-full flex-col justify-between gap-8 border border-border bg-surface p-7 transition-colors duration-300 hover:bg-surface-2 md:p-8"
+                  className="group border-border bg-surface hover:bg-surface-2 flex h-full flex-col justify-between gap-8 border p-7 transition-colors duration-300 md:p-8"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <span
-                      dir="ltr"
-                      className="text-xs font-medium tracking-[0.22em] text-fg-subtle"
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                  <div className="flex items-center gap-4">
+                    <p className="text-fg-subtle text-sm font-medium tracking-[0.18em] uppercase">
+                      {t(`${m.id}.label`)}
+                    </p>
                     <span
                       aria-hidden
-                      className="block h-px w-12 bg-fg/15 transition-[width,background-color] duration-300 group-hover:w-20 group-hover:bg-accent"
+                      className="bg-fg/15 group-hover:bg-accent block h-px w-12 transition-[width,background-color] duration-300 group-hover:w-20"
                     />
                   </div>
                   <div>
-                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-fg-subtle">
-                      {t(`${m.key}.label`)}
-                    </p>
                     <p
                       dir="ltr"
-                      className="mt-3 text-fg font-extrabold leading-tight"
+                      className="text-fg leading-tight font-extrabold"
                       style={{
                         fontFamily: "var(--font-display)",
                         fontSize: "var(--text-h2)",
@@ -110,9 +128,7 @@ function ContactMethods() {
                     >
                       {m.value}
                     </p>
-                    <p className="mt-3 text-sm text-fg-muted">
-                      {t(`${m.key}.helper`)}
-                    </p>
+                    <p className="text-fg-muted mt-3 text-sm">{t(`${m.id}.helper`)}</p>
                   </div>
                 </a>
               </li>
@@ -134,13 +150,13 @@ function FormAndMap() {
       <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-1 gap-12 px-6 md:grid-cols-[3fr_2fr] md:gap-16 md:px-10">
         <div>
           <Reveal>
-            <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-accent">
+            <p className="text-accent mb-5 text-sm font-medium tracking-[0.18em] uppercase">
               {t("form.eyebrow")}
             </p>
           </Reveal>
           <Reveal delay={0.06}>
             <h2
-              className="max-w-[22ch] text-fg font-extrabold leading-[1.05]"
+              className="text-fg max-w-[22ch] leading-[1.05] font-extrabold"
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "var(--text-display-md)",
@@ -151,7 +167,7 @@ function FormAndMap() {
             </h2>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="mt-6 max-w-[58ch] text-base leading-relaxed text-fg-muted">
+            <p className="text-fg-muted mt-6 max-w-[58ch] text-base leading-relaxed">
               {t("form.lede")}
             </p>
           </Reveal>
@@ -164,11 +180,11 @@ function FormAndMap() {
         <div className="md:sticky md:top-24">
           <Reveal delay={0.1}>
             <div>
-              <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-accent">
+              <p className="text-accent mb-5 text-sm font-medium tracking-[0.18em] uppercase">
                 {t("map.eyebrow")}
               </p>
               <h3
-                className="text-fg font-extrabold leading-tight"
+                className="text-fg leading-tight font-extrabold"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "var(--text-h2)",
@@ -177,7 +193,7 @@ function FormAndMap() {
               >
                 {t("map.title")}
               </h3>
-              <address className="mt-4 not-italic text-base leading-relaxed text-fg-muted">
+              <address className="text-fg-muted mt-4 text-base leading-relaxed not-italic">
                 {company.address.line1}
                 <br />
                 {company.address.line2}
@@ -200,14 +216,14 @@ function HoursBand() {
   const locale = useLocale();
 
   return (
-    <section className="bg-surface border-y border-border">
+    <section className="bg-surface border-border border-y">
       <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-1 gap-10 px-6 py-14 md:grid-cols-3 md:px-10">
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-fg-subtle">
+          <p className="text-fg-subtle text-xs font-medium tracking-[0.22em] uppercase">
             {t("operations.label")}
           </p>
           <p
-            className="mt-3 text-fg font-extrabold leading-tight"
+            className="text-fg mt-3 leading-tight font-extrabold"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "var(--text-h2)",
@@ -216,14 +232,14 @@ function HoursBand() {
           >
             <span dir="ltr">24 / 7</span>
           </p>
-          <p className="mt-2 text-sm text-fg-muted">{t("operations.body")}</p>
+          <p className="text-fg-muted mt-2 text-sm">{t("operations.body")}</p>
         </div>
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-fg-subtle">
+          <p className="text-fg-subtle text-xs font-medium tracking-[0.22em] uppercase">
             {t("office.label")}
           </p>
           <p
-            className="mt-3 text-fg font-extrabold leading-tight"
+            className="text-fg mt-3 leading-tight font-extrabold"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "var(--text-h2)",
@@ -232,14 +248,14 @@ function HoursBand() {
           >
             {locale === "ar" ? company.hours.officeWindow_ar : company.hours.officeWindow}
           </p>
-          <p className="mt-2 text-sm text-fg-muted">{t("office.body")}</p>
+          <p className="text-fg-muted mt-2 text-sm">{t("office.body")}</p>
         </div>
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-fg-subtle">
+          <p className="text-fg-subtle text-xs font-medium tracking-[0.22em] uppercase">
             {t("response.label")}
           </p>
           <p
-            className="mt-3 text-fg font-extrabold leading-tight"
+            className="text-fg mt-3 leading-tight font-extrabold"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "var(--text-h2)",
@@ -248,7 +264,7 @@ function HoursBand() {
           >
             <span dir="ltr">{"< 2h"}</span>
           </p>
-          <p className="mt-2 text-sm text-fg-muted">{t("response.body")}</p>
+          <p className="text-fg-muted mt-2 text-sm">{t("response.body")}</p>
         </div>
       </div>
     </section>
