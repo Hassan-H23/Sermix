@@ -24,10 +24,18 @@ export function CountUp({
   const reduce = useReducedMotion();
   const [value, setValue] = useState(0);
 
+  // Safety net for phones: if the in-view trigger is missed, snap to the final
+  // value after a short delay so a stat never stays stuck at 0.
+  const [forceShow, setForceShow] = useState(false);
   useEffect(() => {
-    if (!inView) return;
+    const id = setTimeout(() => setForceShow(true), 1600);
+    return () => clearTimeout(id);
+  }, []);
 
-    if (reduce) {
+  useEffect(() => {
+    if (!inView && !forceShow) return;
+
+    if (reduce || (forceShow && !inView)) {
       setValue(to);
       return;
     }
@@ -38,7 +46,7 @@ export function CountUp({
       onUpdate: (v) => setValue(v),
     });
     return () => controls.stop();
-  }, [inView, to, durationMs, reduce]);
+  }, [inView, forceShow, to, durationMs, reduce]);
 
   return (
     <span ref={ref} dir="ltr" className={className}>

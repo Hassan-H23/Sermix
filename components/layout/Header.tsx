@@ -73,7 +73,7 @@ export function Header() {
             {t("nav.about")}
           </Link>
           <Link
-            href="/pre-qualification"
+            href="/certification"
             className="text-sm font-medium text-fg/80 hover:text-fg transition-colors duration-200"
           >
             {t("nav.preQualification")}

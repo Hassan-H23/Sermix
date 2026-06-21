@@ -16,7 +16,7 @@ const NAV_LINKS = [
   { href: "/services", key: "services" },
   { href: "/projects", key: "projects" },
   { href: "/about", key: "about" },
-  { href: "/pre-qualification", key: "preQualification" },
+  { href: "/certification", key: "preQualification" },
   { href: "/contact", key: "contact" },
 ] as const;
 
@@ -157,18 +157,25 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                     {company.whatsapp.display}
                   </span>
                 </a>
-                <a
-                  href={`tel:${company.phone.href}`}
-                  onClick={onClose}
-                  className="block"
-                >
+                <div>
                   <span className="block text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle">
                     {t("mobileNav.phone")}
                   </span>
-                  <span dir="ltr" className="mt-1 block text-base text-fg">
-                    {company.phone.display}
+                  {/* Both client lines listed under one label, primary first. */}
+                  <span className="mt-1 flex flex-col gap-1">
+                    {[company.phone, company.phone2].map((p) => (
+                      <a
+                        key={p.href}
+                        href={`tel:${p.href}`}
+                        onClick={onClose}
+                        dir="ltr"
+                        className="block text-base text-fg transition-colors duration-200 hover:text-accent"
+                      >
+                        {p.display}
+                      </a>
+                    ))}
                   </span>
-                </a>
+                </div>
               </div>
 
               <div className="mt-auto flex items-center justify-between border-t border-border pt-6">

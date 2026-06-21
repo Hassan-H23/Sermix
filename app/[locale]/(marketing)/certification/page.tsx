@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { PageHero } from "@/components/marketing/PageHero";
 import { routing } from "@/lib/i18n/routing";
 
-// Static PDF reference. The file is ~56MB so the iframe uses loading="lazy"
-// to defer the fetch until the viewer scrolls into view — page hero stays
-// snappy and visitors who only land on the page don't pay the cost.
-//
-// `#view=FitH` is an Adobe PDF open parameter: fit to width on initial load.
-// Respected by Chrome's built-in viewer and most Chromium derivatives, ignored
-// by Safari (which falls back to its default zoom). Either way the PDF renders.
-const PDF_PATH = "/pre-qualification.pdf";
-const PDF_VIEW_PARAMS = "#view=FitH&toolbar=1&navpanes=0";
+// The certificate is shown as a rasterised image of its single page so it
+// previews inline on every browser and device. Native PDF viewers are
+// inconsistent — many (especially on mobile, or with "download PDFs" enabled)
+// force a download instead of rendering. The full PDF stays one click away via
+// the download / open-in-new-tab buttons.
+const PDF_PATH = "/sermix-iso-9001-certificate.pdf";
+const CERT_IMAGE = "/images/certification-iso-9001.jpg";
+const CERT_IMAGE_W = 1405;
+const CERT_IMAGE_H = 1988;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -82,19 +83,20 @@ function ViewerSection() {
           <p className="ms-auto text-xs text-fg-subtle">{t("sizeNote")}</p>
         </div>
 
-        {/* Viewer frame. `loading="lazy"` defers the 56MB fetch until the
-            iframe enters the viewport. min-height keeps the frame useful even
-            when the viewport is short; 80vh keeps it generous on desktop. */}
-        <div className="overflow-hidden rounded-[4px] border border-border bg-surface-2">
-          <iframe
-            src={`${PDF_PATH}${PDF_VIEW_PARAMS}`}
-            title={t("iframeLabel")}
-            loading="lazy"
-            className="block h-[80vh] min-h-[560px] w-full"
+        {/* Inline preview — rasterised first page of the certificate. Renders
+            on every browser and device (no native PDF viewer required), so
+            visitors are never forced to download just to see it. */}
+        <div className="overflow-hidden rounded-[4px] border border-border bg-surface-2 p-3 md:p-6">
+          <Image
+            src={CERT_IMAGE}
+            alt={t("iframeLabel")}
+            width={CERT_IMAGE_W}
+            height={CERT_IMAGE_H}
+            sizes="(min-width: 1024px) 800px, 92vw"
+            className="mx-auto h-auto w-full max-w-[800px]"
+            priority
           />
         </div>
-
-        <p className="mt-4 text-sm text-fg-muted">{t("fallback")}</p>
       </div>
     </section>
   );

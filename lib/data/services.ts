@@ -36,10 +36,8 @@ export const services: readonly Service[] = [
     slug: "ready-mix-concrete",
     name: "Ready-Mix Concrete",
     name_ar: "خرسانة جاهزة",
-    shortDescription:
-      "Tested mix designs delivered on schedule across Greater Cairo, from standard structural to high-performance.",
-    shortDescription_ar:
-      "تصاميم خلطات معتمدة تُسلَّم في موعدها في كل أنحاء القاهرة الكبرى، من الإنشائية القياسية إلى عالية الأداء.",
+    shortDescription: "Concrete conforming to specifications and standards.",
+    shortDescription_ar: "خرسانة مطابقة للمواصفات والمعايير",
     longDescription:
       "Our core product. Every load is batched against the engineer's spec, weighed twice, at the plant and at the site, and logged against a ticket that ties back to the cubes pulled at delivery. Whether it's a single villa pour or a multi-week infrastructure programme, the mix arrives the same way: on schedule, on slump, and traceable.",
     longDescription_ar:
@@ -60,8 +58,7 @@ export const services: readonly Service[] = [
     name_ar: "ميزان شاحنات",
     shortDescription:
       "Calibrated weighbridge on site, every load logged, every ticket auditable.",
-    shortDescription_ar:
-      "ميزان شاحنات معاير في الموقع, كل حمولة مسجَّلة، وكل إيصال قابل للتدقيق.",
+    shortDescription_ar: "طاقة إنتاجية كبيرة بأحدث المعدات",
     longDescription:
       "A certified weighbridge inside the plant, calibrated and routinely audited. Every mixer crosses the scale twice: at batch and at site. The combination gives the contractor an unambiguous record of what left and what arrived, and gives Sermix dispatch the trust signal needed when a contractor is comparing tickets across suppliers.",
     longDescription_ar:
@@ -81,9 +78,8 @@ export const services: readonly Service[] = [
     name: "Cube Crushing Lab",
     name_ar: "معمل اختبار المكعبات",
     shortDescription:
-      "In-house compressive-strength testing, no third-party delays, results inside 28 days.",
-    shortDescription_ar:
-      "اختبار مقاومة الانضغاط داخل الشركة, دون تأخير من جهات خارجية، نتائج خلال 28 يومًا.",
+      "In-house compressive-strength testing, results inside 28 days.",
+    shortDescription_ar: "اختبارات معملية بعتمدات الجهات المختصة",
     longDescription:
       "We pull cubes from every batch, cure them on site, and crush them inside our own lab on the 7-, 14-, and 28-day cycles. No queueing behind another contractor's submissions at a shared lab, no third-party turnaround risk. Every cube is tagged to its dispatch ticket, so when the engineer asks for the strength record of a specific pour, we hand back the chain in minutes.",
     longDescription_ar:
@@ -94,7 +90,6 @@ export const services: readonly Service[] = [
     keyFacts: [
       { label: "Test cycle", label_ar: "دورة الاختبار", value: "7 / 14 / 28 days", value_ar: "7 / 14 / 28 يومًا" },
       { label: "Tagging", label_ar: "الربط", value: "Per dispatch ticket", value_ar: "لكل بطاقة إرسال" },
-      { label: "Turnaround", label_ar: "زمن التسليم", value: "No third-party queue", value_ar: "دون انتظار جهة خارجية" },
     ],
     feature: true,
   },
@@ -104,8 +99,7 @@ export const services: readonly Service[] = [
     name_ar: "مضخات الخرسانة",
     shortDescription:
       "Boom and line pumps sized to the pour, high-rise reach, hard-to-access sites.",
-    shortDescription_ar:
-      "مضخات بذراع وخراطيم بأحجام تناسب الصب, تصل للارتفاعات العالية والمواقع الصعبة.",
+    shortDescription_ar: "متابعة من الشركة من وقت التعاقد وحتى تسلّم المنشأة",
     longDescription:
       "Boom and line pumps coordinated with our mixer rotation. We size the pump to the pour rate and the site geometry, a 36-metre boom for a typical residential structural pour, longer reach for high-rise or restricted-access work. Pump scheduling, mixer dispatch, and weighbridge logging are run from the same desk, so a delay at one end is absorbed before it reaches the site.",
     longDescription_ar:
@@ -113,11 +107,7 @@ export const services: readonly Service[] = [
     image: "/images/concrete_pump.png",
     imageAlt: "Sermix boom pump positioned on site",
     imageAlt_ar: "مضخة سيرمكس بذراع جاهزة في الموقع",
-    keyFacts: [
-      { label: "Boom reach", label_ar: "مدى الذراع", value: "Up to 50 m", value_ar: "حتى 50 م" },
-      { label: "Pump types", label_ar: "أنواع المضخات", value: "Boom + line", value_ar: "بذراع وخراطيم" },
-      { label: "Coordination", label_ar: "التنسيق", value: "Single dispatch desk", value_ar: "مكتب إرسال موحَّد" },
-    ],
+    keyFacts: [],
     feature: false,
   },
   {
@@ -125,20 +115,18 @@ export const services: readonly Service[] = [
     name: "Transit Mixers",
     name_ar: "خلاطات النقل",
     shortDescription:
-      "Fleet of 8m³ and 10m³ mixers running 24/7 from the New Cairo plant.",
+      "Fleet of 10 m³ mixers running 24/7 from the New Cairo plant.",
     shortDescription_ar:
-      "أسطول من خلاطات 8 و10 متر مكعب تعمل على مدار الساعة من محطة القاهرة الجديدة.",
+      "أسطول من خلاطات 10 متر مكعب تعمل على مدار الساعة من محطة القاهرة الجديدة.",
     longDescription:
-      "An 8 m³ and 10 m³ mixer fleet running rotation off the New Cairo plant. Dispatch is staffed 24/7, with night shifts standard rather than premium, large infrastructure pours, fast-track projects, and consecutive-block residential sequencing all happen routinely on overnight slots. Mixer maintenance is in-house so a vehicle issue is hours away from a swap, not days.",
+      "A 10 m³ mixer fleet running rotation off the New Cairo plant. Dispatch is staffed 24/7, with night shifts standard rather than premium, large infrastructure pours, fast-track projects, and consecutive-block residential sequencing all happen routinely on overnight slots. Mixer maintenance is in-house so a vehicle issue is hours away from a swap, not days.",
     longDescription_ar:
-      "أسطول خلاطات بسعة 8 و10 متر مكعب يعمل بنظام تناوب من محطة القاهرة الجديدة. الإرسال متاح على مدار الساعة، والمناوبات الليلية معتادة لا استثنائية, عمليات الصب الكبيرة للبنية التحتية، والمشاريع المضغوطة، وتعاقب العمارات السكنية تجري كلها بشكل اعتيادي في فترات ليلية. صيانة الخلاطات داخل الشركة، فمعالجة عطل في مركبة هي مسألة ساعات لا أيام.",
+      "أسطول خلاطات بسعة 10 متر مكعب يعمل بنظام تناوب من محطة القاهرة الجديدة. الإرسال متاح على مدار الساعة، والمناوبات الليلية معتادة لا استثنائية, عمليات الصب الكبيرة للبنية التحتية، والمشاريع المضغوطة، وتعاقب العمارات السكنية تجري كلها بشكل اعتيادي في فترات ليلية. صيانة الخلاطات داخل الشركة، فمعالجة عطل في مركبة هي مسألة ساعات لا أيام.",
     image: "/images/hero-truck.jpg",
     imageAlt: "Sermix mixer at the New Cairo batching plant",
     imageAlt_ar: "خلاطة سيرمكس في محطة القاهرة الجديدة",
     keyFacts: [
-      { label: "Fleet sizes", label_ar: "أحجام الأسطول", value: "8 m³ + 10 m³", value_ar: "8 م³ + 10 م³" },
-      { label: "Dispatch", label_ar: "الإرسال", value: "24 / 7", value_ar: "24 / 7" },
-      { label: "Maintenance", label_ar: "الصيانة", value: "In-house workshop", value_ar: "ورشة داخلية" },
+      { label: "Fleet size", label_ar: "حجم الأسطول", value: "10 m³", value_ar: "10 م³" },
     ],
     feature: false,
   },

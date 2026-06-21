@@ -17,8 +17,8 @@ export default async function HomePage({
   return (
     <main>
       <HeroSlider />
-      <Services />
       <CompanyCarousel />
+      <Services />
       <About />
       <WhyChooseUs />
       <Projects />

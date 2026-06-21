@@ -37,6 +37,7 @@ export default async function AboutPage({
       <FoundingStory />
       <Stats />
       <Leadership />
+      <ManagementHierarchy />
       <Facilities />
       <CtaStrip />
     </main>
@@ -85,13 +86,20 @@ function FoundingStory() {
           </div>
         </Reveal>
         <Reveal delay={0.12}>
-          <div className="relative aspect-[3/2] overflow-hidden rounded-[4px]">
-            <Image
-              src="/images/sermix_truck_employee.png"
-              alt={t("imageAlt")}
-              fill
-              sizes="(min-width: 768px) 45vw, 90vw"
-              className="object-cover"
+          <div className="relative aspect-[3/2] overflow-hidden rounded-[4px] bg-surface-2">
+            {/* Looping, muted, inline autoplay so it behaves like a moving
+                image (no controls, plays on mobile). Poster paints instantly
+                and is the fallback if the video can't load. */}
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              src="/videos/about_us_video.mp4"
+              poster="/images/sermix_truck_employee.png"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label={t("imageAlt")}
             />
           </div>
         </Reveal>
@@ -162,6 +170,51 @@ function Leadership() {
             </Reveal>
           ))}
         </ul>
+      </div>
+    </section>
+  );
+}
+
+// ── Management system hierarchy ─────────────────────────────────────────────
+// Standalone section showing the org/management-system chart. The asset is a
+// wide diagram, so it's rendered object-contain at its natural ratio (never
+// cropped) on a contrasting card.
+function ManagementHierarchy() {
+  const t = useTranslations("aboutPage.hierarchy");
+  const locale = useLocale();
+
+  return (
+    <section className="border-y border-border bg-bg py-24 md:py-32">
+      <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
+        <Reveal>
+          <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-accent">
+            {t("eyebrow")}
+          </p>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <h2
+            className="max-w-[20ch] text-fg font-extrabold leading-[1.05]"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "var(--text-display-md)",
+              letterSpacing: locale === "ar" ? "-0.01em" : "-0.02em",
+            }}
+          >
+            {t("title")}
+          </h2>
+        </Reveal>
+        <Reveal delay={0.12}>
+          <div className="mt-12 overflow-hidden rounded-[4px] border border-border bg-surface p-4 md:p-8">
+            <Image
+              src="/images/management-system-hierarchy.png"
+              alt={t("imageAlt")}
+              width={1403}
+              height={752}
+              sizes="(min-width: 1200px) 1136px, (min-width: 768px) 90vw, 92vw"
+              className="h-auto w-full"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

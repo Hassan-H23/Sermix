@@ -52,10 +52,7 @@ export function Footer() {
         </div>
 
         {/* ── 4 info columns ───────────────────────────────────────────── */}
-        <div
-          className="mt-16 grid grid-cols-1 gap-12 border-t pt-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10"
-          style={{ borderColor: "rgba(245,240,230,0.18)" }}
-        >
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {/* Plant / address */}
           <FooterColumn label={t("columns.plant")}>
             <address
@@ -199,7 +196,13 @@ export function Footer() {
 
 function FooterColumn({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div>
+    <div
+      className="h-full rounded-[4px] border p-6"
+      style={{
+        borderColor: "rgba(245,240,230,0.18)",
+        backgroundColor: "rgba(245,240,230,0.03)",
+      }}
+    >
       <p
         className="text-xs font-medium tracking-[0.22em] uppercase"
         style={{ color: "var(--color-fg-on-steel-muted)" }}

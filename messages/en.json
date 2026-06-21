@@ -11,7 +11,7 @@
       "services": "Services",
       "projects": "Projects",
       "about": "About",
-      "preQualification": "Pre-qualification",
+      "preQualification": "Certification",
       "contact": "Contact"
     },
     "cta": "Order",
@@ -32,7 +32,7 @@
   "hero": {
     "eyebrow": "Saudi Egyptian Ready-mix concrete · New Cairo, since 2009",
     "headline": "Concrete you can build a city on.",
-    "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Cairo, backed by an in-house cube-crushing lab and certified truck scale.",
+    "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Egypt, backed by an in-house cube-crushing lab and certified truck scale.",
     "ctaPrimary": "Request a Quote",
     "ctaSecondary": "Our Services",
     "imageAlt": "Sermix concrete mixer truck at the batching plant",
@@ -42,7 +42,7 @@
     "slides": {
       "video": {
         "headline": "The future to those whom have the vision.",
-        "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Cairo, backed by an in-house cube-crushing lab and certified truck scale."
+        "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Egypt, backed by an in-house cube-crushing lab and certified truck scale."
       },
       "foundation": {
         "headline": "Where big ideas meet solid ground.",
@@ -118,7 +118,7 @@
   },
   "companies": {
     "eyebrow": "Clients",
-    "title": "The names we pour for.",
+    "title": "Our Clients",
     "ariaLabel": "Companies Sermix has supplied concrete to"
   },
   "projects": {
@@ -147,7 +147,7 @@
   },
   "footer": {
     "logoAlt": "Sermix",
-    "tagline": "Concrete you can build a city on. Ready-mix supply, lab-tested, dispatched from New Cairo since 2009.",
+    "tagline": "Concrete you can build a city on",
     "viewOnMap": "View on map",
     "columns": {
       "plant": "Plant",
@@ -166,7 +166,7 @@
       "office": { "label": "Office" }
     },
     "copyright": "© {year} {name} · All rights reserved",
-    "origin": "Built in Cairo"
+    "origin": "Built in Egypt"
   },
   "servicesPage": {
     "metaTitle": "Services",
@@ -219,6 +219,11 @@
         "role": "Founding Board Member"
       }
     },
+    "hierarchy": {
+      "eyebrow": "Management system",
+      "title": "How Sermix is organised.",
+      "imageAlt": "Sermix management system hierarchy chart"
+    },
     "facilities": {
       "eyebrow": "Facilities",
       "title": "What we bring to a pour.",
@@ -232,7 +237,7 @@
       },
       "fleet": {
         "title": "Fleet and dispatch",
-        "body": "Mixers of 8 m³ and 10 m³ running 24/7 from the New Cairo plant, sequenced through a calibrated weighbridge so every load is logged twice, at batch and at site."
+        "body": "Mixers of 10 m³ running 24/7 from the New Cairo plant, sequenced through a calibrated weighbridge so every load is logged twice, at batch and at site."
       }
     },
     "cta": {
@@ -242,19 +247,18 @@
     }
   },
   "preQualificationPage": {
-    "metaTitle": "Pre-qualification document",
+    "metaTitle": "Certification",
     "hero": {
-      "eyebrow": "Pre-qualification",
-      "title": "Sermix pre-qualification document.",
-      "lede": "Our company profile, certifications, plant capacity, and quality systems, supplied for tender and pre-qualification packages. Preview below or download the full PDF."
+      "eyebrow": "Certification",
+      "title": "Sermix quality certification.",
+      "lede": "Our ISO 9001 quality-management-system certificate. Preview it below or download the full PDF."
     },
     "viewer": {
       "downloadCta": "Download PDF",
       "openCta": "Open in new tab",
-      "sizeNote": "PDF · ~11 MB",
-      "iframeLabel": "Sermix pre-qualification document",
-      "fileName": "sermix-pre-qualification.pdf",
-      "fallback": "Some mobile browsers can't render large PDFs inline. If you don't see the document above, use the download link."
+      "sizeNote": "PDF · ~17 MB",
+      "iframeLabel": "Sermix ISO 9001 certificate",
+      "fileName": "sermix-iso-9001-certificate.pdf"
     }
   },
   "contactPage": {

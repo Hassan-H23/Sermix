@@ -66,7 +66,7 @@ export const company = {
   hours: {
     // Sermix runs 24/7 ops (confirmed in CLAUDE.md and Stats band).
     twentyFourSeven: true,
-    officeWindow: "Office hours: Sun–Thu, 09:00–18:00",
-    officeWindow_ar: "ساعات المكتب: الأحد–الخميس، 09:00–18:00",
+    officeWindow: "Office hours: Sun–Thu, 8:00 AM – 5:30 PM",
+    officeWindow_ar: "ساعات المكتب: الأحد–الخميس، 8:00 ص – 5:30 م",
   },
 } as const;

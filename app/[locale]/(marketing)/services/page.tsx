@@ -177,6 +177,7 @@ function ServiceBlock({ service, index }: { service: Service; index: number }) {
                 {desc}
               </p>
             </Reveal>
+            {service.keyFacts.length > 0 && (
             <Reveal delay={0.18}>
               <dl className="mt-10 border-t border-border">
                 {service.keyFacts.map((fact, fi) => {
@@ -207,6 +208,7 @@ function ServiceBlock({ service, index }: { service: Service; index: number }) {
                 })}
               </dl>
             </Reveal>
+            )}
           </div>
 
           {/* Image column */}
