@@ -91,7 +91,7 @@ export const projects: readonly Project[] = [
     description:
       "Bus Rapid Transit corridor, viaducts, station decks, and pavement. The work demanded continuous overnight pours, fast-track strength gain, and accurate batch records pulled from the on-site truck scale.",
     description_ar:
-      "ممر الحافلات السريعة, جسور علوية، وأرضيات محطات، ورصف. تطلّب العمل عمليات صب ليلية متواصلة، وكسبًا سريعًا للقوة، وسجلات حمولات دقيقة من ميزان الشاحنات في الموقع.",
+      "مشروع محطات الاتوبيس الترددي, جسور علوية، وأرضيات محطات، ورصف. تطلّب العمل عمليات صب ليلية متواصلة، وكسبًا سريعًا للقوة، وسجلات حمولات دقيقة من ميزان الشاحنات في الموقع.",
     gallery: [],
   },
   {
@@ -213,7 +213,15 @@ export const projects: readonly Project[] = [
       "Architectural and structural precast cast at the Sermix yard, branded signage walls, security panels, dividers, and modular sections poured under controlled plant conditions and delivered to site cured and ready to install.",
     description_ar:
       "خرسانة سابقة الصب معمارية وإنشائية تُصب في ساحة سيرمكس, جدران لافتات بالهوية، وألواح حماية، وفواصل، وأجزاء وحدوية تُصب في ظروف محطة معايرة وتُسلَّم إلى الموقع جاهزة للتركيب.",
-    gallery: [],
+    gallery: [
+      "/images/projects/pre-cast/pre_cast_1.jpeg",
+      "/images/projects/pre-cast/pre_cast_2.jpeg",
+      "/images/projects/pre-cast/pre_cast_3.jpeg",
+      "/images/projects/pre-cast/pre_cast_4.jpeg",
+      "/images/projects/pre-cast/pre_cast_5.jpeg",
+      "/images/projects/pre-cast/pre_cast_6.jpeg",
+      "/images/projects/pre-cast/pre_cast_7.jpeg",
+    ],
   },
 ];
 

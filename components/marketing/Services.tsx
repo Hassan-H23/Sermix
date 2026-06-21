@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { services } from "@/lib/data/services";
 import { Reveal } from "@/components/motion/Reveal";
+import { Link } from "@/lib/i18n/navigation";
 
 // Bento grid per CLAUDE.md: differentiators (Truck Scale, Cube Crushing Lab,
 // Ready-Mix Concrete) get larger tiles. Each tile carries a blurred photo
@@ -112,7 +113,10 @@ function ServiceTile({ service, index, variant }: ServiceTileProps) {
 
   return (
     <Reveal delay={index * 0.06} className={spanClass}>
-      <article className="group relative h-full w-full overflow-hidden rounded-[4px]">
+      <Link
+        href={`/services#${service.slug}`}
+        className="group relative block h-full w-full overflow-hidden rounded-[4px]"
+      >
         {/* Blurred photographic background. scale-110 baseline so blur edges
             never expose the tile boundary. Slight zoom + de-blur on hover
             for interactivity. */}
@@ -178,7 +182,7 @@ function ServiceTile({ service, index, variant }: ServiceTileProps) {
             </p>
           </div>
         </div>
-      </article>
+      </Link>
     </Reveal>
   );
 }

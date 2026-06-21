@@ -63,9 +63,9 @@ export const services: readonly Service[] = [
       "A certified weighbridge inside the plant, calibrated and routinely audited. Every mixer crosses the scale twice: at batch and at site. The combination gives the contractor an unambiguous record of what left and what arrived, and gives Sermix dispatch the trust signal needed when a contractor is comparing tickets across suppliers.",
     longDescription_ar:
       "ميزان شاحنات معتمد داخل المحطة، معاير ويخضع للتدقيق الدوري. تعبر كل خلاطة الميزان مرتين: عند الخلط وفي الموقع. تمنح هذه المعادلة المقاول سجلًا قاطعًا لما خرج وما وصل, وتمنح إدارة سيرمكس إشارة الثقة التي يحتاجها المقاول عند المقارنة بين تذاكر الموردين.",
-    image: "/images/sermix_truck_cement.jpg",
-    imageAlt: "Sermix mixers lined at the batching plant",
-    imageAlt_ar: "خلاطات سيرمكس مصطفة في محطة الخلط",
+    image: "/images/transit_mixer.jpeg",
+    imageAlt: "Sermix transit mixer at the New Cairo batching plant",
+    imageAlt_ar: "خلاطة نقل سيرمكس في محطة القاهرة الجديدة",
     keyFacts: [
       { label: "Certification", label_ar: "الاعتماد", value: "Calibrated weighbridge", value_ar: "ميزان شاحنات معاير" },
       { label: "Weighing", label_ar: "الوزن", value: "Twice per load", value_ar: "مرتان لكل حمولة" },
@@ -122,9 +122,9 @@ export const services: readonly Service[] = [
       "A 10 m³ mixer fleet running rotation off the New Cairo plant. Dispatch is staffed 24/7, with night shifts standard rather than premium, large infrastructure pours, fast-track projects, and consecutive-block residential sequencing all happen routinely on overnight slots. Mixer maintenance is in-house so a vehicle issue is hours away from a swap, not days.",
     longDescription_ar:
       "أسطول خلاطات بسعة 10 متر مكعب يعمل بنظام تناوب من محطة القاهرة الجديدة. الإرسال متاح على مدار الساعة، والمناوبات الليلية معتادة لا استثنائية, عمليات الصب الكبيرة للبنية التحتية، والمشاريع المضغوطة، وتعاقب العمارات السكنية تجري كلها بشكل اعتيادي في فترات ليلية. صيانة الخلاطات داخل الشركة، فمعالجة عطل في مركبة هي مسألة ساعات لا أيام.",
-    image: "/images/hero-truck.jpg",
-    imageAlt: "Sermix mixer at the New Cairo batching plant",
-    imageAlt_ar: "خلاطة سيرمكس في محطة القاهرة الجديدة",
+    image: "/images/sermix_truck_cement.jpg",
+    imageAlt: "Sermix mixers lined at the batching plant",
+    imageAlt_ar: "خلاطات سيرمكس مصطفة في محطة الخلط",
     keyFacts: [
       { label: "Fleet size", label_ar: "حجم الأسطول", value: "10 m³", value_ar: "10 م³" },
     ],
@@ -148,7 +148,6 @@ export const services: readonly Service[] = [
     keyFacts: [
       { label: "Casting", label_ar: "الصب", value: "Plant-controlled", value_ar: "بمعايرة المحطة" },
       { label: "Finishes", label_ar: "التشطيبات", value: "Embossed, exposed, custom", value_ar: "بارز، ظاهر، مخصَّص" },
-      { label: "Lead time", label_ar: "زمن التسليم", value: "7 – 14 days", value_ar: "7 – 14 يومًا" },
     ],
     feature: false,
   },

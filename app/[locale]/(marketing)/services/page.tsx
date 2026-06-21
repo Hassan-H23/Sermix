@@ -73,39 +73,50 @@ function ServicesOverview() {
             const name = locale === "ar" ? s.name_ar : s.name;
             const desc =
               locale === "ar" ? s.shortDescription_ar : s.shortDescription;
+            // Precast links out to its project case study rather than
+            // scrolling to the in-page section.
+            const isPrecast = s.slug === "precast-concrete";
+            const inner = (
+              <>
+                <div className="flex items-baseline justify-between gap-4">
+                  <span
+                    dir="ltr"
+                    className="text-xs font-medium tracking-[0.22em] text-fg-subtle"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="block h-px w-10 bg-fg/15 transition-[width,background-color] duration-300 group-hover:w-16 group-hover:bg-accent"
+                  />
+                </div>
+                <h3
+                  className="mt-5 text-fg font-extrabold leading-tight"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "var(--text-h2)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {name}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-fg-muted">
+                  {desc}
+                </p>
+              </>
+            );
             return (
               <Reveal key={s.slug} delay={0.04 + i * 0.05}>
                 <li className="border-t border-border pt-5">
-                  <a
-                    href={`#${s.slug}`}
-                    className="group block"
-                  >
-                    <div className="flex items-baseline justify-between gap-4">
-                      <span
-                        dir="ltr"
-                        className="text-xs font-medium tracking-[0.22em] text-fg-subtle"
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        aria-hidden
-                        className="block h-px w-10 bg-fg/15 transition-[width,background-color] duration-300 group-hover:w-16 group-hover:bg-accent"
-                      />
-                    </div>
-                    <h3
-                      className="mt-5 text-fg font-extrabold leading-tight"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "var(--text-h2)",
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
-                      {name}
-                    </h3>
-                    <p className="mt-3 text-base leading-relaxed text-fg-muted">
-                      {desc}
-                    </p>
-                  </a>
+                  {isPrecast ? (
+                    <Link href="/projects/pre-cast" className="group block">
+                      {inner}
+                    </Link>
+                  ) : (
+                    <a href={`#${s.slug}`} className="group block">
+                      {inner}
+                    </a>
+                  )}
                 </li>
               </Reveal>
             );

@@ -107,8 +107,8 @@
         "body": "Our own 28-day testing cycle, no third-party delays. Engineers see results when they need them, not when an outside lab gets to them."
       },
       "03": {
-        "title": "Certified truck scale",
-        "body": "Calibrated weighbridge on site. Every load weighed twice, at batch and at site, with audit-ready logs."
+        "title": "Plant running on two mixers",
+        "body": "Giving it double the output and continuous, uninterrupted operation a production capability no other company in the area can match."
       },
       "04": {
         "title": "On time, around the clock",
@@ -141,6 +141,12 @@
     "descriptionEyebrow": "About the project",
     "scopeLabel": "Sermix scope",
     "galleryEyebrow": "Gallery",
+    "gallery": {
+      "viewLarger": "View larger image",
+      "close": "Close",
+      "previous": "Previous image",
+      "next": "Next image"
+    },
     "nextProjectLabel": "Next project",
     "nextProjectCta": "Continue",
     "nextProjectAria": "Continue to the next project"

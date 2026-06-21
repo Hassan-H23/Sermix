@@ -12,10 +12,8 @@ import {
 } from "@/lib/data/projects";
 import { services as allServices } from "@/lib/data/services";
 import { routing } from "@/lib/i18n/routing";
+import { ProjectGallery } from "@/components/marketing/ProjectGallery";
 import type { Metadata } from "next";
-
-// TODO(post-launch): gallery click → lightbox. Out of scope for v1 — gallery
-// images are displayed inline in the alternating-height grid only.
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -217,34 +215,13 @@ function ProjectDetail({ project }: { project: Project }) {
         </div>
       </section>
 
-      {/* 5. Gallery — alternating-height 2-col grid for visual rhythm */}
+      {/* 5. Gallery — alternating-height grid; click opens a lightbox */}
       {project.gallery.length > 0 && (
-        <section className="bg-bg pb-24 md:pb-32">
-          <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
-            <p className="mb-8 text-sm font-medium uppercase tracking-[0.18em] text-accent">
-              {t("galleryEyebrow")}
-            </p>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              {project.gallery.map((src, i) => (
-                <Reveal key={`${src}-${i}`} delay={i * 0.08}>
-                  <div
-                    className={`relative w-full overflow-hidden rounded-[4px] ${
-                      i % 2 === 0 ? "aspect-[4/3]" : "aspect-[3/4]"
-                    }`}
-                  >
-                    <Image
-                      src={src}
-                      alt={`${name} — ${i + 1}`}
-                      fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProjectGallery
+          images={project.gallery}
+          name={name}
+          eyebrow={t("galleryEyebrow")}
+        />
       )}
 
       {/* 6. Next project navigation — full-width band on steel */}
