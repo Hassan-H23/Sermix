@@ -1,11 +1,8 @@
 import { useTranslations } from "next-intl";
 import { CountUp } from "@/components/motion/CountUp";
 
-// Stats band — full-width strip on cream surface, four numbers.
+// Stats band — two stat cards on the cream surface.
 // Numbers count up on scroll-in (CountUp respects reduced motion).
-//
-// TODO: figures (volume poured, project count) are placeholders agreed with
-// the brief. Validate against client records before launch.
 
 type Stat = {
   value: number;
@@ -15,8 +12,6 @@ type Stat = {
 
 const STATS: ReadonlyArray<Stat> = [
   { value: 16, suffix: "", labelKey: "stats.years" },
-  { value: 1500, suffix: "+", labelKey: "stats.projects" },
-  { value: 350, suffix: "K m³", labelKey: "stats.volume" },
   { value: 24, suffix: "/7", labelKey: "stats.ops" },
 ];
 
@@ -31,10 +26,14 @@ export function Stats() {
       <h2 id="stats-title" className="sr-only">
         {t("stats.title")}
       </h2>
-      <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-2 gap-y-10 px-6 py-16 md:grid-cols-4 md:gap-y-0 md:px-10 md:py-20">
+      <div className="mx-auto grid max-w-[var(--container-max)] grid-cols-2 gap-4 px-6 py-16 sm:gap-6 md:px-10 md:py-20">
         {STATS.map((stat) => (
-          <div key={stat.labelKey} className="flex flex-col gap-3">
+          <div
+            key={stat.labelKey}
+            className="flex flex-col items-center gap-3 rounded-[4px] border border-border bg-surface p-8 text-center md:p-10"
+          >
             <div
+              dir="ltr"
               className="text-fg font-extrabold leading-[0.95]"
               style={{
                 fontFamily: "var(--font-display)",
@@ -43,7 +42,7 @@ export function Stats() {
               }}
             >
               <CountUp to={stat.value} />
-              <span dir="ltr" className="text-accent">
+              <span className="text-accent">
                 {stat.suffix}
               </span>
             </div>

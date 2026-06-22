@@ -204,10 +204,10 @@ export const projects: readonly Project[] = [
     category_label_ar: "صناعي",
     client: "Sermix Precast",
     location: "New Cairo",
-    year: 2024,
+    year: 2026,
     volume: "—",
-    coverImage: "/images/projects/pre-cast/pre_cast_1.jpeg",
-    heroImage: "/images/projects/pre-cast/pre_cast_1.jpeg",
+    coverImage: "/images/projects/pre-cast/pre_cast_7.jpeg",
+    heroImage: "/images/projects/pre-cast/pre_cast_7.jpeg",
     scope: ["precast-concrete"],
     description:
       "Architectural and structural precast cast at the Sermix yard, branded signage walls, security panels, dividers, and modular sections poured under controlled plant conditions and delivered to site cured and ready to install.",

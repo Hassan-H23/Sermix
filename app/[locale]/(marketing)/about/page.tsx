@@ -80,8 +80,6 @@ function FoundingStory() {
             </h2>
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-fg-muted">
               <p>{t("p1")}</p>
-              <p>{t("p2")}</p>
-              <p>{t("p3")}</p>
             </div>
           </div>
         </Reveal>

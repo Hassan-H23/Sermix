@@ -41,11 +41,11 @@
     "slide": "Show slide {n}",
     "slides": {
       "video": {
-        "headline": "The future to those whom have the vision.",
+        "headline": "Quality that builds the future.",
         "subhead": "Sermix delivers tested, on-spec ready-mix to projects across Egypt, backed by an in-house cube-crushing lab and certified truck scale."
       },
       "foundation": {
-        "headline": "Where big ideas meet solid ground.",
+        "headline": "Your trusted partner in every meter.",
         "subhead": "Bridging the gap between the client's vision and the physical reality we deliver. Every big project, a tower, a bridge, a factory starts with concrete."
       },
       "vision": {
@@ -81,7 +81,7 @@
     "pillars": {
       "reliability": {
         "label": "Reliability",
-        "value": "On-time pours, sequenced to the contractor's schedule."
+        "value": "On-time pours, sequenced to the customer's schedule."
       },
       "experience": {
         "label": "Experience",
@@ -103,16 +103,16 @@
         "body": "Compressive-strength cubes pulled from every load and tracked against the ticket, no batch leaves the plant without a record."
       },
       "02": {
-        "title": "Cube-crushing lab in-house",
+        "title": "Accredited testing lab",
         "body": "Our own 28-day testing cycle, no third-party delays. Engineers see results when they need them, not when an outside lab gets to them."
       },
       "03": {
-        "title": "Plant running on two mixers",
+        "title": "Two batching plants",
         "body": "Giving it double the output and continuous, uninterrupted operation a production capability no other company in the area can match."
       },
       "04": {
         "title": "On time, around the clock",
-        "body": "24/7 operations sequenced with the contractor. Night pours, fast-track schedules, and continuous deliveries are routine, not exceptional."
+        "body": "24/7 operations sequenced with the customer. Night pours, fast-track schedules, and continuous deliveries are routine, not exceptional."
       }
     }
   },
@@ -203,10 +203,8 @@
     },
     "story": {
       "eyebrow": "How we got here",
-      "title": "From one batching plant to the contractor's default supplier.",
-      "p1": "Sermix opened in 2009 with a single batching plant in New Cairo and a small fleet of mixers. The brief was simple: deliver concrete on spec, on time, every load, and put a lab on site so every batch can be traced back to a number, not a promise.",
-      "p2": "Sixteen years later, the brief is the same. The plant has grown. The fleet has grown. The roster of contractors who default to Sermix when their schedule can't afford a missed pour has grown.",
-      "p3": "What hasn't changed: every truck leaves with a ticket, every batch goes through the lab, and every customer talks to someone who can read a mix design.",
+      "title": "From the plant to the customer's handover",
+      "p1": "Sermix opened in 2009 with a single batching plant in New Cairo and a small fleet of mixers. The brief was simple: deliver concrete on spec, on time, every load, and put a lab on site so every batch can be traced back to a number,",
       "imageAlt": "Sermix mixer at the batching plant"
     },
     "leadership": {
@@ -239,7 +237,7 @@
       },
       "lab": {
         "title": "On-site testing lab",
-        "body": "In-house compressive-strength testing with results inside the 28-day cycle. Every batch's cubes are tagged to the dispatch ticket so each pour has its own paper trail."
+        "body": "An accredited in-house lab ready for all tests, continuously calibrated by external bodies."
       },
       "fleet": {
         "title": "Fleet and dispatch",

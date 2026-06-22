@@ -75,8 +75,8 @@ export const services: readonly Service[] = [
   },
   {
     slug: "cube-crushing-lab",
-    name: "Cube Crushing Lab",
-    name_ar: "معمل اختبار المكعبات",
+    name: "Integrated & Accredited Testing Lab",
+    name_ar: "معمل اختبارات متكامل ومعتمد",
     shortDescription:
       "In-house compressive-strength testing, results inside 28 days.",
     shortDescription_ar: "اختبارات معملية بعتمدات الجهات المختصة",

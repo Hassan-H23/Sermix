@@ -193,7 +193,7 @@ export function HeroSlider() {
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0.2 : 0.6, ease }}
-          className="mb-6 text-sm font-medium uppercase tracking-[0.22em]"
+          className="mb-8 text-sm font-medium uppercase tracking-[0.22em]"
           style={{ color: "var(--color-fg-on-steel-muted)" }}
         >
           <span dir="ltr">{t("eyebrow")}</span>
@@ -208,11 +208,11 @@ export function HeroSlider() {
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0.2 : 0.6, delay: 0.08, ease }}
-          className="max-w-[18ch] font-extrabold leading-[0.95]"
+          className="max-w-[18ch] font-extrabold leading-[1.1]"
           style={{
             color: "var(--color-fg-on-steel)",
             fontFamily: "var(--font-display)",
-            fontSize: "var(--text-display-xl)",
+            fontSize: "var(--text-display-lg)",
             letterSpacing: locale === "ar" ? "-0.01em" : "-0.03em",
           }}
         >
@@ -225,7 +225,7 @@ export function HeroSlider() {
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0.2 : 0.6, delay: 0.16, ease }}
-          className="mt-8 max-w-[58ch] text-lg leading-relaxed md:text-xl"
+          className="mt-10 max-w-[58ch] text-lg leading-relaxed md:text-xl"
           style={{ color: "var(--color-fg-on-steel-muted)" }}
         >
           {t(`slides.${current.headlineKey}.subhead`)}
@@ -235,7 +235,7 @@ export function HeroSlider() {
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0.2 : 0.6, delay: 0.24, ease }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          className="mt-12 flex flex-wrap items-center gap-4"
         >
           <Link
             href={`/${locale}/order`}

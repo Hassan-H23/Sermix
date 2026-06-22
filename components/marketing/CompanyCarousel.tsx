@@ -51,11 +51,6 @@ export function CompanyCarousel() {
     >
       <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
         <div className="text-center">
-          <Reveal>
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-accent">
-              {t("eyebrow")}
-            </p>
-          </Reveal>
           <Reveal delay={0.06}>
             <h2
               id="companies-title"
