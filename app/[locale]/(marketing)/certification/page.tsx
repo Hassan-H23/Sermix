@@ -56,11 +56,7 @@ export default async function PreQualificationPage({
 function PageHeroSlot() {
   const t = useTranslations("preQualificationPage");
   return (
-    <PageHero
-      eyebrow={t("hero.eyebrow")}
-      title={t("hero.title")}
-      lede={t("hero.lede")}
-    />
+    <PageHero eyebrow={t("hero.eyebrow")} title={t("hero.title")} />
   );
 }
 

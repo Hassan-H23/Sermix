@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { useLocale, useTranslations } from "next-intl";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/marketing/PageHero";
+import { PrecastSlider } from "@/components/marketing/PrecastSlider";
 import { Reveal } from "@/components/motion/Reveal";
 import { Link } from "@/lib/i18n/navigation";
 import { services, type Service } from "@/lib/data/services";
@@ -151,6 +152,96 @@ function ServiceBlock({ service, index }: { service: Service; index: number }) {
   const imageAlt = locale === "ar" ? service.imageAlt_ar : service.imageAlt;
 
   const imageOnEnd = index % 2 === 0;
+  const isPrecast = service.slug === "precast-concrete";
+
+  // Shared copy column — rendered inside the 2-up grid for normal services,
+  // and as a full-width block above the slider for precast.
+  const copy = (
+    <>
+      <Reveal>
+        <p
+          dir="ltr"
+          className="mb-5 text-xs font-medium tracking-[0.22em] text-fg-subtle"
+        >
+          {String(index + 1).padStart(2, "0")} · {tFacts("eyebrow")}
+        </p>
+      </Reveal>
+      <Reveal delay={0.06}>
+        <h2
+          id={`${service.slug}-title`}
+          className="max-w-[18ch] text-fg font-extrabold leading-[1.05]"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "var(--text-display-md)",
+            letterSpacing: locale === "ar" ? "-0.01em" : "-0.02em",
+          }}
+        >
+          {name}
+        </h2>
+      </Reveal>
+      <Reveal delay={0.12}>
+        <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-fg-muted">
+          {desc}
+        </p>
+      </Reveal>
+      {service.keyFacts.length > 0 && (
+        <Reveal delay={0.18}>
+          <dl className="mt-10 border-t border-border">
+            {service.keyFacts.map((fact, fi) => {
+              const label = locale === "ar" ? fact.label_ar : fact.label;
+              const value = locale === "ar" ? fact.value_ar : fact.value;
+              return (
+                <div
+                  key={fi}
+                  className="flex flex-wrap items-baseline justify-between gap-4 border-b border-border py-4"
+                >
+                  <dt className="text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle">
+                    {label}
+                  </dt>
+                  <dd
+                    className="text-fg font-extrabold leading-tight"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "var(--text-h2)",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    <span dir="ltr">{value}</span>
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
+        </Reveal>
+      )}
+    </>
+  );
+
+  // Precast gets a full-bleed horizontal slider (current image, then
+  // pre_cast_9, then pre_cast_8) below its copy instead of the side image.
+  if (isPrecast) {
+    const galleryImages = [
+      { src: "/images/projects/pre-cast/pre_cast_slider_image_1.jpeg", alt: imageAlt },
+      { src: "/images/projects/pre-cast/pre_cast_slider_image_2.jpeg", alt: imageAlt },
+      { src: "/images/projects/pre-cast/pre_cast_slider_image_3.jpeg", alt: imageAlt },
+    ];
+    return (
+      <section
+        id={service.slug}
+        aria-labelledby={`${service.slug}-title`}
+        className="scroll-mt-24 bg-bg py-24 md:py-32"
+      >
+        <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
+          {copy}
+        </div>
+        <Reveal delay={0.12} className="mt-12 md:mt-16">
+          <div className="mx-auto max-w-[var(--content-max)] px-6 md:px-10">
+            <PrecastSlider images={galleryImages} />
+          </div>
+        </Reveal>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -161,66 +252,7 @@ function ServiceBlock({ service, index }: { service: Service; index: number }) {
       <div className="mx-auto max-w-[var(--container-max)] px-6 md:px-10">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
           {/* Copy column */}
-          <div className={imageOnEnd ? "md:order-1" : "md:order-2"}>
-            <Reveal>
-              <p
-                dir="ltr"
-                className="mb-5 text-xs font-medium tracking-[0.22em] text-fg-subtle"
-              >
-                {String(index + 1).padStart(2, "0")} · {tFacts("eyebrow")}
-              </p>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <h2
-                id={`${service.slug}-title`}
-                className="max-w-[18ch] text-fg font-extrabold leading-[1.05]"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--text-display-md)",
-                  letterSpacing: locale === "ar" ? "-0.01em" : "-0.02em",
-                }}
-              >
-                {name}
-              </h2>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <p className="mt-6 max-w-[56ch] text-lg leading-relaxed text-fg-muted">
-                {desc}
-              </p>
-            </Reveal>
-            {service.keyFacts.length > 0 && (
-            <Reveal delay={0.18}>
-              <dl className="mt-10 border-t border-border">
-                {service.keyFacts.map((fact, fi) => {
-                  const label =
-                    locale === "ar" ? fact.label_ar : fact.label;
-                  const value =
-                    locale === "ar" ? fact.value_ar : fact.value;
-                  return (
-                    <div
-                      key={fi}
-                      className="flex flex-wrap items-baseline justify-between gap-4 border-b border-border py-4"
-                    >
-                      <dt className="text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle">
-                        {label}
-                      </dt>
-                      <dd
-                        className="text-fg font-extrabold leading-tight"
-                        style={{
-                          fontFamily: "var(--font-display)",
-                          fontSize: "var(--text-h2)",
-                          letterSpacing: "-0.02em",
-                        }}
-                      >
-                        <span dir="ltr">{value}</span>
-                      </dd>
-                    </div>
-                  );
-                })}
-              </dl>
-            </Reveal>
-            )}
-          </div>
+          <div className={imageOnEnd ? "md:order-1" : "md:order-2"}>{copy}</div>
 
           {/* Image column */}
           <Reveal

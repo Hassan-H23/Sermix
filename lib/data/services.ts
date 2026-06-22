@@ -45,11 +45,7 @@ export const services: readonly Service[] = [
     image: "/images/concrete_bag.png",
     imageAlt: "Sermix-branded cement bag with mortar and trowel",
     imageAlt_ar: "كيس أسمنت سيرمكس مع مونة ومسطرين",
-    keyFacts: [
-      { label: "Grades", label_ar: "الدرجات", value: "C20 – C50+", value_ar: "C20 – C50+" },
-      { label: "Plant capacity", label_ar: "طاقة المحطة", value: "120 m³/hr", value_ar: "120 م³/ساعة" },
-      { label: "Mix design", label_ar: "تصميم الخلطة", value: "Per pour, lab-signed", value_ar: "لكل عملية صب، باعتماد المعمل" },
-    ],
+    keyFacts: [],
     feature: true,
   },
   {
@@ -62,7 +58,7 @@ export const services: readonly Service[] = [
     longDescription:
       "A certified weighbridge inside the plant, calibrated and routinely audited. Every mixer crosses the scale twice: at batch and at site. The combination gives the contractor an unambiguous record of what left and what arrived, and gives Sermix dispatch the trust signal needed when a contractor is comparing tickets across suppliers.",
     longDescription_ar:
-      "ميزان شاحنات معتمد داخل المحطة، معاير ويخضع للتدقيق الدوري. تعبر كل خلاطة الميزان مرتين: عند الخلط وفي الموقع. تمنح هذه المعادلة المقاول سجلًا قاطعًا لما خرج وما وصل, وتمنح إدارة سيرمكس إشارة الثقة التي يحتاجها المقاول عند المقارنة بين تذاكر الموردين.",
+      "ميزان بسكول معتمد داخل المحطة، معاير ويخضع للتدقيق الدوري. تعبر كل خلاطة الميزان مرتين: عند الخلط وفي الموقع. تمنح هذه المعادلة المقاول سجلًا قاطعًا لما خرج وما وصل, وتمنح إدارة سيرمكس إشارة الثقة التي يحتاجها المقاول عند المقارنة بين تذاكر الموردين.",
     image: "/images/transit_mixer.jpeg",
     imageAlt: "Sermix transit mixer at the New Cairo batching plant",
     imageAlt_ar: "خلاطة نقل سيرمكس في محطة القاهرة الجديدة",
@@ -101,9 +97,9 @@ export const services: readonly Service[] = [
       "Boom and line pumps sized to the pour, high-rise reach, hard-to-access sites.",
     shortDescription_ar: "متابعة من الشركة من وقت التعاقد وحتى تسلّم المنشأة",
     longDescription:
-      "Boom and line pumps coordinated with our mixer rotation. We size the pump to the pour rate and the site geometry, a 36-metre boom for a typical residential structural pour, longer reach for high-rise or restricted-access work. Pump scheduling, mixer dispatch, and weighbridge logging are run from the same desk, so a delay at one end is absorbed before it reaches the site.",
+      "High-quality pumps with varying boom lengths to suit each site.",
     longDescription_ar:
-      "مضخات بذراع وخراطيم تُنسَّق مع دوران خلاطاتنا. نختار المضخة بحسب معدل الصب وهندسة الموقع, ذراع 36 مترًا لعملية صب إنشائية سكنية اعتيادية، ومدى أطول للارتفاعات العالية أو المواقع المقيدة. تُدار جدولة المضخات وإرسال الخلاطات وتسجيل ميزان الشاحنات من المكتب نفسه، فيتم استيعاب أي تأخير قبل وصوله إلى الموقع.",
+      "مضخات عالية الجودة بأطوال ذراع مختلفة حسب ما يتناسب مع المواقع",
     image: "/images/concrete_pump.png",
     imageAlt: "Sermix boom pump positioned on site",
     imageAlt_ar: "مضخة سيرمكس بذراع جاهزة في الموقع",
@@ -125,9 +121,7 @@ export const services: readonly Service[] = [
     image: "/images/sermix_truck_cement.jpg",
     imageAlt: "Sermix mixers lined at the batching plant",
     imageAlt_ar: "خلاطات سيرمكس مصطفة في محطة الخلط",
-    keyFacts: [
-      { label: "Fleet size", label_ar: "حجم الأسطول", value: "10 m³", value_ar: "10 م³" },
-    ],
+    keyFacts: [],
     feature: false,
   },
   {

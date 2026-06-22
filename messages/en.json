@@ -225,7 +225,7 @@
     },
     "hierarchy": {
       "eyebrow": "Management system",
-      "title": "How Sermix is organised.",
+      "title": "The management structure.",
       "imageAlt": "Sermix management system hierarchy chart"
     },
     "facilities": {
@@ -254,8 +254,7 @@
     "metaTitle": "Certification",
     "hero": {
       "eyebrow": "Certification",
-      "title": "Sermix quality certification.",
-      "lede": "Our ISO 9001 quality-management-system certificate. Preview it below or download the full PDF."
+      "title": "Sermix company certifications"
     },
     "viewer": {
       "downloadCta": "Download PDF",
