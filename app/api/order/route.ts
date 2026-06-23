@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import { orderSchema } from "@/lib/forms/schemas";
 import { sendEmail } from "@/lib/email/send";
+import {
+  brandedEmailShell,
+  emailSection,
+  emailRow,
+  emailParagraph,
+  loadLogoAttachment,
+} from "@/lib/email/template";
 
 export const runtime = "nodejs";
 
@@ -25,68 +32,77 @@ export async function POST(request: Request) {
 
   const o = parsed.data;
 
+  const NA = "—";
+
+  // Plain-text fallback (Egyptian Arabic), for clients that don't render HTML.
   const text = [
-    "New Sermix concrete order",
+    "طلب خرسانة جديد من موقع سيرميكس",
     "",
-    "── PROJECT ──",
-    `Name:        ${o.projectName}`,
-    `Location:    ${o.projectLocation}`,
-    `Contractor:  ${o.contractor || "—"}`,
+    "── المشروع ──",
+    `اسم المشروع:   ${o.projectName}`,
+    `الموقع:        ${o.projectLocation}`,
+    `المقاول:       ${o.contractor || NA}`,
     "",
-    "── SPEC ──",
-    `Grade:       ${o.grade}`,
-    `Volume:      ${o.volumeM3} m³`,
-    `Slump:       ${o.slump || "—"}`,
+    "── المواصفات ──",
+    `درجة الخرسانة: ${o.grade}`,
+    `الكمية:        ${o.volumeM3} m³`,
+    `الهبوط:        ${o.slump || NA}`,
     "",
-    "── SCHEDULE ──",
-    `Date:        ${o.date}`,
-    `Time:        ${o.timeWindow || "—"}`,
+    "── المواعيد ──",
+    `التاريخ:       ${o.date}`,
+    `الميعاد:       ${o.timeWindow || NA}`,
     "",
-    "── SITE CONTACT ──",
-    `Name:        ${o.contactName}`,
-    `Phone:       ${o.contactPhone}`,
-    `Email:       ${o.contactEmail}`,
+    "── بيانات التواصل في الموقع ──",
+    `الاسم:         ${o.contactName}`,
+    `التليفون:      ${o.contactPhone}`,
+    `الإيميل:       ${o.contactEmail}`,
     "",
-    "── NOTES ──",
-    o.notes || "—",
+    "── ملاحظات ──",
+    o.notes || NA,
   ].join("\n");
 
-  const row = (label: string, value: string) =>
-    `<tr><td style="padding:4px 12px 4px 0"><b>${label}</b></td><td style="padding:4px 0">${escapeHtml(value)}</td></tr>`;
+  const logo = await loadLogoAttachment();
 
-  const html = `
-    <h2 style="font-family:sans-serif">New Sermix concrete order</h2>
-    <h3 style="font-family:sans-serif;border-bottom:1px solid #ddd;padding-bottom:4px">Project</h3>
-    <table style="font-family:sans-serif;font-size:14px">
-      ${row("Name", o.projectName)}
-      ${row("Location", o.projectLocation)}
-      ${row("Contractor", o.contractor || "—")}
-    </table>
-    <h3 style="font-family:sans-serif;border-bottom:1px solid #ddd;padding-bottom:4px">Spec</h3>
-    <table style="font-family:sans-serif;font-size:14px">
-      ${row("Grade", o.grade)}
-      ${row("Volume", `${o.volumeM3} m³`)}
-      ${row("Slump", o.slump || "—")}
-    </table>
-    <h3 style="font-family:sans-serif;border-bottom:1px solid #ddd;padding-bottom:4px">Schedule</h3>
-    <table style="font-family:sans-serif;font-size:14px">
-      ${row("Date", o.date)}
-      ${row("Time window", o.timeWindow || "—")}
-    </table>
-    <h3 style="font-family:sans-serif;border-bottom:1px solid #ddd;padding-bottom:4px">Site contact</h3>
-    <table style="font-family:sans-serif;font-size:14px">
-      ${row("Name", o.contactName)}
-      ${row("Phone", o.contactPhone)}
-      ${row("Email", o.contactEmail)}
-    </table>
-    ${o.notes ? `<h3 style="font-family:sans-serif">Notes</h3><p style="font-family:sans-serif;white-space:pre-wrap">${escapeHtml(o.notes)}</p>` : ""}
-  `;
+  const contentHtml =
+    emailSection(
+      "تفاصيل المشروع",
+      emailRow("اسم المشروع", o.projectName) +
+        emailRow("الموقع", o.projectLocation) +
+        emailRow("المقاول", o.contractor || NA),
+    ) +
+    emailSection(
+      "مواصفات الخرسانة",
+      emailRow("الدرجة", o.grade) +
+        emailRow("الكمية", `${o.volumeM3} m³`) +
+        emailRow("الهبوط (Slump)", o.slump || NA),
+    ) +
+    emailSection(
+      "مواعيد الصب",
+      emailRow("التاريخ", o.date) + emailRow("الميعاد", o.timeWindow || NA),
+    ) +
+    emailSection(
+      "بيانات التواصل في الموقع",
+      emailRow("الاسم", o.contactName) +
+        emailRow("التليفون", o.contactPhone) +
+        emailRow("الإيميل", o.contactEmail),
+    ) +
+    (o.notes ? emailParagraph("ملاحظات إضافية", o.notes) : "");
+
+  const html = brandedEmailShell({
+    eyebrow: "طلب خرسانة جديد",
+    heading: o.projectName,
+    contentHtml,
+    footnote:
+      "وصلك الطلب ده من فورم الطلب على موقع سيرميكس. تقدر ترد على الإيميل ده علطول عشان توصل للعميل.",
+    hasLogo: !!logo,
+  });
 
   const result = await sendEmail({
-    subject: `Concrete order — ${o.projectName} (${o.grade}, ${o.volumeM3} m³)`,
+    subject: `طلب خرسانة — ${o.projectName} (${o.grade}، ${o.volumeM3} m³)`,
     text,
     html,
     replyTo: o.contactEmail,
+    attachments: logo ? [logo] : undefined,
   });
 
   if (!result.ok) {
@@ -97,13 +113,4 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ ok: true });
-}
-
-function escapeHtml(s: string) {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }

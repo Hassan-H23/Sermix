@@ -74,8 +74,8 @@ export const services: readonly Service[] = [
     name: "Integrated & Accredited Testing Lab",
     name_ar: "معمل اختبارات متكامل ومعتمد",
     shortDescription:
-      "In-house compressive-strength testing, results inside 28 days.",
-    shortDescription_ar: "اختبارات معملية بعتمدات الجهات المختصة",
+      "Lab testing accredited by the relevant authorities.",
+    shortDescription_ar: "اختبارات معملية باعتمادات الجهات المختصة",
     longDescription:
       "We pull cubes from every batch, cure them on site, and crush them inside our own lab on the 7-, 14-, and 28-day cycles. No queueing behind another contractor's submissions at a shared lab, no third-party turnaround risk. Every cube is tagged to its dispatch ticket, so when the engineer asks for the strength record of a specific pour, we hand back the chain in minutes.",
     longDescription_ar:

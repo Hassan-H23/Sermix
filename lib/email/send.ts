@@ -10,6 +10,15 @@ import { Resend } from "resend";
 //   CONTACT_EMAIL_TO    — inbox that receives Sermix enquiries
 //   CONTACT_EMAIL_FROM  — sender (must be a verified domain in Resend)
 
+// Inline/file attachment, mirrors the fields we use from Resend's Attachment.
+// `contentId` makes it an inline image referenced in the HTML via `cid:`.
+type EmailAttachment = {
+  filename: string;
+  content: Buffer | string;
+  contentType?: string;
+  contentId?: string;
+};
+
 type SendArgs = {
   subject: string;
   // Plain text or HTML; we send both.
@@ -17,9 +26,17 @@ type SendArgs = {
   html: string;
   // Optional reply-to so the recipient can hit Reply and reach the submitter.
   replyTo?: string;
+  // Optional inline images / files (e.g. the branded logo).
+  attachments?: EmailAttachment[];
 };
 
-export async function sendEmail({ subject, text, html, replyTo }: SendArgs) {
+export async function sendEmail({
+  subject,
+  text,
+  html,
+  replyTo,
+  attachments,
+}: SendArgs) {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_EMAIL_TO ?? "info@sermix.com.eg";
   const from =
@@ -42,6 +59,7 @@ export async function sendEmail({ subject, text, html, replyTo }: SendArgs) {
     text,
     html,
     ...(replyTo ? { replyTo } : {}),
+    ...(attachments && attachments.length ? { attachments } : {}),
   });
 
   if (result.error) {

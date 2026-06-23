@@ -283,7 +283,10 @@ export function OrderForm() {
       </Fieldset>
 
       <div className="flex flex-wrap items-center gap-6">
-        <Button type="submit" size="lg" disabled={status === "submitting"}>
+        {/* Submit temporarily disabled — order intake is paused until email
+            delivery is finalised. Re-enable by restoring the dynamic disabled
+            state: disabled={status === "submitting"}. */}
+        <Button type="submit" size="lg" disabled>
           {status === "submitting" ? t("submitting") : t("submit")}
         </Button>
         {status === "error" && (
