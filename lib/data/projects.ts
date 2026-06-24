@@ -197,7 +197,7 @@ export const projects: readonly Project[] = [
   {
     // TODO: client to confirm client name, location, year, and volume.
     slug: "pre-cast",
-    name: "Pre-Cast",
+    name: "Precast",
     name_ar: "خرسانة سابقة الصب",
     category: "industrial",
     category_label: "Industrial",
@@ -206,8 +206,8 @@ export const projects: readonly Project[] = [
     location: "New Cairo",
     year: 2026,
     volume: "—",
-    coverImage: "/images/projects/pre-cast/pre_cast_7.jpeg",
-    heroImage: "/images/projects/pre-cast/pre_cast_7.jpeg",
+    coverImage: "/images/pre_cast_concrete.jpg",
+    heroImage: "/images/pre_cast_concrete.jpg",
     scope: ["precast-concrete"],
     description:
       "Architectural and structural precast cast at the Sermix yard, branded signage walls, security panels, dividers, and modular sections poured under controlled plant conditions and delivered to site cured and ready to install.",
